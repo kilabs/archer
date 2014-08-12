@@ -54,8 +54,11 @@ return array(
 		'db'=>CMap::mergeArray(
 		    require(dirname(__FILE__).'/db.php'),
 		    array(
-		        // Put back-end settings there.
+		        'schemaCachingDuration'=>3600,
 		    )
+		),
+		'cache'=>array(
+		    'class' => 'CFileCache',
 		),
 		// uncomment the following to use a MySQL database
 		/*
