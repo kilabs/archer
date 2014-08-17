@@ -67,4 +67,15 @@ class PostController extends ApiController
 			'lat',
 		)));
 	}
+
+	public function actionAdd(){
+		$post = new ApiPostForm();
+		$post->attributes = $_POST;
+		if($post->save()){
+			$this->sendSuccessMessage('Post Tersimpan');
+		}
+		else{
+			$this->send($post->getErrors(),0);
+		}
+	}
 }
