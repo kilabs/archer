@@ -60,7 +60,7 @@ class Post extends CActiveRecord
 		return array(
 			'detail'=>array(self::HAS_ONE,'PostDetail','idPost'),
 			'kategori'=>array(self::BELONGS_TO,'Kategori','idKategori'),
-			'galerys'=>array(self::HAS_MANY,'Postgalery','idPost'),
+			'galerys'=>array(self::HAS_MANY,'PostGalery','idPost'),
 			'totalReview'=>array(self::STAT,'Review','idPost'),
 			'reviews'=>array(self::HAS_MANY,'Review','idPost'),
 			'member'=>array(self::BELONGS_TO,'Member','idMember'),
@@ -148,7 +148,7 @@ class Post extends CActiveRecord
 			$this->tanggalModif = date('Y-m-d H:i:s');
 			if(is_null($this->status)){
 				$this->status = 1;
-				
+
 			}
 		}
 		else{
