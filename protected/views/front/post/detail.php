@@ -176,17 +176,18 @@
 <div class="container page-addons">
   <div class="row">
     <div class="col-md-7 shop-reviews">
-      <h4>26 Reviews</h4>
+      <h4><?php echo $post->totalReview; ?> Reviews</h4>
       <div class="ads-728x90">
         <a class="block" href="#">
           <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/ads728x90.png">
         </a>
       </div>
       <ul class="reviews list-unstyled">
+        <?php foreach ($post->reviews as $key => $value): ?>  
         <li class="review"><div class="row">
           <div class="col-sm-3 review-user text-center">
             <img alt="" class="avatar" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/ava.jpg">
-            <p><a href="#">John Doe</a></p>
+            <p><a href="#"><?php echo $value->member->username; ?></a></p>
           </div>
           <div class="col-sm-9 review-content">
             <div class="clearfix">
@@ -197,38 +198,16 @@
                 <i class="icon icon-star"></i>
                 <i class="icon icon-star-o"></i>
               </span>
-              <time class="pull-right grey">15 Juli 2014</time>
+              <time class="pull-right grey"><?php echo date("d M Y",strtotime($value->time)); ?></time>
             </div>
             <br>
             <div class="review-entry">
-              <p>Molestiae odio doloribus earum et omnis quis tempore totam aut. nam asperiores non dolor aut maiores est architecto. amet praesentium aliquam corrupti tempore cumque expedita aut. hic iste voluptatem ratione quae quisquam magni minima eaque sit rem eligendi itaque. atque dolor molestias amet sunt eum fugit ut quo ipsa eligendi</p>
+              <p><?php echo $value->kontent; ?></p>
             </div>
           </div>
         </div>
       </li>
-      <li class="review"><div class="row">
-        <div class="col-sm-3 review-user text-center">
-          <img alt="" class="avatar" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/ava.jpg">
-          <p><a href="#">John Doe</a></p>
-        </div>
-        <div class="col-sm-9 review-content">
-          <div class="clearfix">
-            <span class="listing-rating pull-left">
-              <i class="icon icon-star"></i>
-              <i class="icon icon-star"></i>
-              <i class="icon icon-star"></i>
-              <i class="icon icon-star"></i>
-              <i class="icon icon-star-o"></i>
-            </span>
-            <time class="pull-right grey">15 Juli 2014</time>
-          </div>
-          <br>
-          <div class="review-entry">
-            <p>Velit enim impedit voluptatem a quisquam quod molestiae. est consequatur molestiae ut ut. itaque voluptates cum dolores quis. tenetur omnis quia sapiente animi sed magni molestiae fuga illo architecto ut deserunt. et aut aut quam</p>
-          </div>
-        </div>
-      </div>
-    </li>
+    <?php endforeach; ?>
   </ul>
   <h4>Leave Reviews</h4>
   <form action="">

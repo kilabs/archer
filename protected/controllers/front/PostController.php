@@ -8,7 +8,7 @@ class PostController extends Controller
 	}
 
 	public function actionDetail($id,$slug){
-		$post = Post::model()->findByPk($id);
+		$post = Post::model()->with(array('reviews'))->findByPk($id);
 		if($post === null)
 			throw new CHttpException('Bengkel Tidak Ditmukan');
 		$this->render('detail',array(
