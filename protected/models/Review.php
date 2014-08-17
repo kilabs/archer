@@ -8,7 +8,7 @@
  * @property integer $idPost
  * @property integer $idMember
  * @property string $kontent
- * @property integer $ranting
+ * @property integer $rating
  * @property string $time
  */
 class Review extends CActiveRecord
@@ -39,11 +39,12 @@ class Review extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idPost, idMember, ranting', 'numerical', 'integerOnly'=>true),
+			array('idPost, idMember, rating', 'numerical', 'integerOnly'=>true),
 			array('kontent, time', 'safe'),
+			array('kontent, rating, idPost, idMember', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, idPost, idMember, kontent, ranting, time', 'safe', 'on'=>'search'),
+			array('id, idPost, idMember, kontent, rating, time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,6 +56,7 @@ class Review extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'member'=>array(self::BELONGS_TO,'Member','idMember'),
 		);
 	}
 
@@ -68,7 +70,7 @@ class Review extends CActiveRecord
 			'idPost' => 'Id Post',
 			'idMember' => 'Id Member',
 			'kontent' => 'Kontent',
-			'ranting' => 'Ranting',
+			'rating' => 'rating',
 			'time' => 'Time',
 		);
 	}
@@ -88,7 +90,7 @@ class Review extends CActiveRecord
 		$criteria->compare('idPost',$this->idPost);
 		$criteria->compare('idMember',$this->idMember);
 		$criteria->compare('kontent',$this->kontent,true);
-		$criteria->compare('ranting',$this->ranting);
+		$criteria->compare('rating',$this->rating);
 		$criteria->compare('time',$this->time,true);
 
 		return new CActiveDataProvider($this, array(

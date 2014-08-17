@@ -11,6 +11,7 @@ return CMap::mergeArray(
 					'api/login'=>'site/login',
 					'api/register'=>'site/register',
 					'api/post/<id:\d+>'=>'post/detail',
+					'api/post/review/<id:\d+>'=>'post/review',
 
 					'api/<_c>'=>'<_c>',
 					'api/<_c>/<_a>'=>'<_c>/<_a>',

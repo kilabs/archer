@@ -28,4 +28,11 @@ class ApiController extends CController
 	public function sendSuccessMessage($msg,$status=1){
 		$this->send(new ApiMessage($msg,$status));	
 	}
+
+	public function getMember($token){
+		$model = Member::model()->findByToken($token);
+		if($model === null)
+			$this->sendErrorMessage('Member Tidak Ditemukan',0);
+		return $model;
+	}
 }

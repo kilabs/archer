@@ -146,6 +146,10 @@ class Post extends CActiveRecord
 		if($this->isNewRecord){
 			$this->tanggalBuat = date('Y-m-d H:i:s');
 			$this->tanggalModif = date('Y-m-d H:i:s');
+			if(is_null($this->status)){
+				$this->status = 1;
+				
+			}
 		}
 		else{
 			$this->tanggalModif = date('Y-m-d H:i:s');

@@ -68,14 +68,74 @@ class PostController extends ApiController
 		)));
 	}
 
+
 	public function actionAdd(){
+		$member = $this->getMember(@$_POST['token']);
+
 		$post = new ApiPostForm();
+		$post->idMember = $member->id;
 		$post->attributes = $_POST;
 		if($post->save()){
 			$this->sendSuccessMessage('Post Tersimpan');
 		}
 		else{
 			$this->send($post->getErrors(),0);
+		}
+	}
+
+	public function actionReview($id){
+		$post = Post::model()->findByPk(@$id);
+		if($post==null)
+			$this->sendErrorMessage('Post Tidak Ditemukan');
+
+		$reviews = Review::model()->with(array('member'))->findAll('idPost=:p1',array(':p1'=>$id));
+		$this->send(new ApiList($reviews,1,array(
+			new ApiCInt('id'),
+			'kontent',
+			'time',
+			new ApiCInt('rating'),
+			new ApiCInt('member.id'),
+			'member.username',
+		)));
+	}
+	public function actionAddReview(){
+		$post = Post::model()->findByPk(@$_POST['idPost']);
+		if($post==null)
+			$this->sendErrorMessage('Post Tidak Ditemukan');
+
+		$member = $this->getMember(@$_POST['token']);
+		$review = new Review('create');
+		$review->attributes = @$_POST;
+		$review->time = date('Y-m-d H:i:s');
+		$review->idMember = $member->id;
+		if($review->save()){
+			$this->sendSuccessMessage('Review Tersimpan');
+		}
+		else{
+			$this->send($review->getErrors(),0);
+		}
+	}
+	public function actionAddImage()
+	{
+		$id = @$_POST['idPost'];
+		$post = Post::model()->findByPk($id);
+		if($post==null)
+			$this->sendErrorMessage('Post Tidak Ditemukan');
+
+		$galery = new PostGalery('create');
+		$galery->idPost = $id;
+		
+		$galery->imageFile=CUploadedFile::getInstanceByName('imageFile');
+		$galery->idPost = $post->id;
+		if($galery->validate()){
+			if($galery->imageFile){
+				$galery->image = LUpload::upload($galery->imageFile,'PostGalery');
+				$galery->save();
+				$this->sendSuccessMessage('Galery Tersimpan');
+			}
+		}
+		else{
+			$this->send($galery->getErrors(),0);
 		}
 	}
 }
