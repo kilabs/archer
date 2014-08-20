@@ -59,7 +59,7 @@
       <div class="col-md-3">
         <h4>&nbsp;</h4>
         <p>
-          <a class="btn btn-red block" href="#">Mulai Berjualan</a>
+          <a class="btn btn-red block" href="<?php echo Yii::app()->createUrl('site/register'); ?>">Mulai Berjualan</a>
         </p>
         <p>
           <a class="btn block" href="#">Hubungi Kami</a>
@@ -99,10 +99,10 @@
   <div class="footer text-center">
     <h5 class="roboto">Temukan kami di</h5>
     <ul class="list-inline">
-      <li><a href="#">Facebook</a></li>
-      <li><a href="#">Twitter</a></li>
-      <li><a href="#">Google+</a></li>
-      <li><a href="#">Youtube</a></li>
+      <li><a href="http://facebook.com/bengkelin">Facebook</a></li>
+      <li><a href="http://twitter.com/bengkel_in">Twitter</a></li>
+      <li><a href="http://plus.google.com/+bengkelin">Google+</a></li>
+      <li><a href="http://youtube.com/bengkelin">Youtube</a></li>
     </ul>
     <p>&copy; Bengkelin, 2014</p>
   </div>

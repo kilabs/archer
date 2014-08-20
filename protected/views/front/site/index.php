@@ -39,7 +39,7 @@
       <h4 class="roboto text-center">Bengkelin.com adalah situs jual beli jasa mudah & terpercaya yang memberi jaminan 100% aman bagi pencari/penyedia jasa. Kembangkan bisnis jasa anda disini</h4>
       <br>
       <div class="text-center">
-        <a class="btn h4 btn-red" href="#">Bergabung dengan Bengkelin</a>
+        <a class="btn h4 btn-red" href="<?php echo Yii::app()->createUrl('site/register'); ?>">Bergabung dengan Bengkelin</a>
       </div>
     </div>
     <!-- .container -->
@@ -50,7 +50,7 @@
     <div class="container">
       <div class="row home-listing">
         <hgroup class="text-center titling roboto">
-          <h2>Bengkel Populer</h2>
+          <h2>Profil Populer - Profil Terlaris minggu ini</h2>
           <h4 class="grey">Bengkel terlaris minggu ini</h4>
         </hgroup>
         <!-- .titling -->
