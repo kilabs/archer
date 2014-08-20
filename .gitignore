@@ -18,4 +18,5 @@ upload/Agency/*
 /index.php
 /admin.php
 /api.php
+.DS_Store
 /protected/yiic.php
