@@ -209,15 +209,42 @@
       </li>
     <?php endforeach; ?>
   </ul>
+  <?php if (!Yii::app()->user->isGuest): ?>
   <h4>Leave Reviews</h4>
-  <form action="">
+  <?php $form=$this->beginWidget('CActiveForm', array(
+    'id'=>'post-form',
+    // Please note: When you enable ajax validation, make sure the corresponding
+    // controller action is handling ajax validation correctly.
+    // There is a call to performAjaxValidation() commented in generated controller code.
+    // See class documentation of CActiveForm for details on this.
+    'enableAjaxValidation'=>false,
+      'htmlOptions'=>array('class'=>'form-horizontal', 'role'=>'form','enctype'=>'multipart/form-data'),
+  )); ?>
+  <?php if ($newReview->hasErrors()): ?>
+    <div class="alert alert-info">
+    <?php echo $form->errorSummary($newReview); ?>
+  </div>
+  <?php endif ?>
+  
     <p>
-      <textarea class="form-control" cols="30" name="" rows="5"></textarea>
+      <?php echo $form->textArea($newReview,'kontent',array('class'=>'form-control')); ?>
+      <?php echo $form->hiddenField($newReview,'rating',array('id'=>'hidden-rating')); ?>
     </p>
+    <p>
+      <span class="listing-rating pull-left" id="input-rating">
+        <i class="icon icon-star-o" value="1" id="c1"></i>
+        <i class="icon icon-star-o" value="2"  id="c2"></i>
+        <i class="icon icon-star-o" value="3"  id="c3"></i>
+        <i class="icon icon-star-o" value="4"  id="c4"></i>
+        <i class="icon icon-star-o"  value="5" id="c5"></i>
+      </span>
+    </p>
+     <div class="clearfix"></div>
     <p>
       <input type="submit" value="Kirim Review">
     </p>
-  </form>
+  <?php $this->endWidget(); ?>
+  <?php endif ?>
 </div>
 <!-- .col-md-8.shop-reviews -->
 
@@ -249,9 +276,9 @@ Yii::app()->clientScript->registerScript('maps',
         "
         var LocsA = [
               {
-                lat: <?php echo $post->lat; ?>,
-                lon: <?php echo $post->lng; ?>,
-                zoom: <?php echo $post->zoom; ?>,
+                lat: ".$post->lat.",
+                lon: ".$post->lng.",
+                zoom: ".$post->zoom.",
                 html: '<p><strong>Maju Jaya Workshop</strong></p>',
              //   animation: google.maps.Animation.DROP
               }
@@ -261,5 +288,26 @@ Yii::app()->clientScript->registerScript('maps',
                   map_div: '.shop-map'
                 }).Load();  
               
+        ",
+        CClientScript::POS_READY);
+
+Yii::app()->clientScript->registerScript('ranting',
+        "
+        $('#input-rating i').css('cursor','pointer');   
+        $('#input-rating i').click(function(){
+          var value = $(this).attr('value');
+          $('#hidden-rating').val(value);
+          $('#input-rating i').removeClass( 'icon-star' );
+          var selected = $('#input-rating i').filter(function(){
+            return $(this).attr('value') <= value;
+          });
+          var notSelected = $('#input-rating i').filter(function(){
+            return $(this).attr('value') > value;
+          });
+          notSelected.removeClass('icon-star');
+          notSelected.addClass('icon-star-o');
+          selected.removeClass('icon-star-o');
+          selected.addClass('icon-star');
+        });
         ",
         CClientScript::POS_READY);

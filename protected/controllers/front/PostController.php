@@ -11,8 +11,20 @@ class PostController extends Controller
 		$post = Post::model()->with(array('reviews'))->findByPk($id);
 		if($post === null)
 			throw new CHttpException('Bengkel Tidak Ditmukan');
+
+		$newReview = new Review();
+		if(isset($_POST['Review'])){
+			$newReview->attributes = $_POST['Review'];
+			$newReview->idPost = $id;
+			$newReview->time = date('Y-m-d H:i:s');
+			$newReview->idMember = Yii::app()->user->getId();
+			if($newReview->save()){
+				$this->refresh();
+			}
+		}
 		$this->render('detail',array(
 			'post'=>$post,
+			'newReview'=>$newReview,
 		));
 	}
 
