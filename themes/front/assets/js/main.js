@@ -98,9 +98,34 @@ $.fn.equalHeight = function(height) {
   });
 };
 
+$.fn.accordion = function() {
+  el = $(this);
+
+  el.each(function() {
+    var elToggler = $(this).children('*:even'),
+        elContent = $(this).children('*:odd');
+
+    elToggler.click(function() {
+      if( !$(this).hasClass('current') ) {
+        $(this).siblings().removeClass('current');
+        $(this).addClass('current');
+        elContent.slideUp();
+        $(this).next().slideDown();
+      }
+      return false;
+    });
+
+    elContent.hide();
+
+  });
+
+  return this;
+};
+
 
 $(document).ready(function() {
   
+$('.accordion').accordion();
 
 });
 

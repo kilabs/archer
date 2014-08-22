@@ -7,7 +7,7 @@
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Profil - Bengkelin</title>
+  <title>Kontak - Bengkelin</title>
 
   <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
 
@@ -31,8 +31,8 @@
         </form>
       </div>
       <div class="col-md-3 offset-md-1 btn-group">
-        <a class="btn half half-left" href="#">Dashboard</a>
-        <a class="btn btn-white half half-right" href="#">Logout</a>
+        <a class="btn half half-left" href="#">Login</a>
+        <a class="btn btn-white half half-right" href="#">Sign Up</a>
       </div>
     </div>
     <!-- .container -->
@@ -71,10 +71,9 @@
         <div class="col-md-3">
           <div class="sidebar row">
             <ul class="list-unstyled dashboard-menu">
-              <li class="active"><a href="/profil.html">Edit Profil</a></li>
-              <li><a href="/password.html">Ganti Password</a></li>
-              <li><a href="/lokasi.html">Lokasi</a></li>
-              <li><a href="/galeri.html">Edit Galeri</a></li>
+              <li><a href="/petunjuk.html">Petunjuk Pasang Iklan</a></li>
+              <li><a href="/disclaimer.html">Disclaimer</a></li>
+              <li class="active"><a href="/kontak.html">Hubungi Kami</a></li>
             </ul>
           </div>
           <!-- .sidebar -->
@@ -83,28 +82,11 @@
 
         <div class="col-md-9 dashboard">
           <form class="form-dashboard">
-            <h3 class="roboto">Edit Profil</h3>
+            <h3 class="roboto">Hubungi Kami</h3>
             <div class="row form-dashboard-row">
               <div class="col-sm-3 col-xs-5">
                 <p class="form-dashboard-label">
-                  Foto Profil
-                </p>
-              </div>
-              <div class="col-sm-6 col-xs-7">
-                <div class="row">
-                  <img alt="" class="avatar col-sm-3" src="uploads/ava.jpg">
-                  <div class="col-sm-9">
-                    <input id="exampleInputFile" type="file">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- .row.form-dashboard-row -->
-
-            <div class="row form-dashboard-row">
-              <div class="col-sm-3 col-xs-5">
-                <p class="form-dashboard-label">
-                  Nama Lengkap
+                  Nama
                   <span class="req">*</span>
                 </p>
               </div>
@@ -118,28 +100,12 @@
             <div class="row form-dashboard-row">
               <div class="col-sm-3 col-xs-5">
                 <p class="form-dashboard-label">
-                  Nama Pengguna
-                  <span class="req">*</span>
-                </p>
-              </div>
-              <div class="col-sm-6 col-xs-7">
-                <input class="form-control form-dashboard-input" type="text">
-                <p class="small grey form-dashboard-helper">Huruf atau angka saja. Tidak boleh memakai spasi</p>
-              </div>
-            </div>
-            <!-- .row.form-dashboard-row -->
-
-            <!-- Contoh validasi error, ditambahi class="error" -->
-            <div class="row form-dashboard-row error">
-              <div class="col-sm-3 col-xs-5">
-                <p class="form-dashboard-label">
                   Email
                   <span class="req">*</span>
                 </p>
               </div>
               <div class="col-sm-6 col-xs-">
                 <input class="form-control form-dashboard-input" type="email">
-                <p class="small">Harap masukkan alamat email yang valid</p>
               </div>
             </div>
             <!-- .row.form-dashboard-row -->
@@ -147,12 +113,17 @@
             <div class="row form-dashboard-row">
               <div class="col-sm-3 col-xs-5">
                 <p class="form-dashboard-label">
-                  Nomor Telepon
+                  Topik
                   <span class="req">*</span>
                 </p>
               </div>
-              <div class="col-sm-6 col-xs-7">
-                <input class="form-control form-dashboard-input" type="tel">
+              <div class="col-sm-6 col-xs-">
+                <select class="form-control" name="">
+                  <option>Bantuan</option>
+                  <option>keluhan</option>
+                  <option>Saran & Kritik</option>
+                  <option>Lain-lain</option>
+                </select>
               </div>
             </div>
             <!-- .row.form-dashboard-row -->
@@ -160,43 +131,8 @@
             <div class="row form-dashboard-row">
               <div class="col-sm-3 col-xs-5">
                 <p class="form-dashboard-label">
-                  Facebook
-                </p>
-              </div>
-              <div class="col-sm-6 col-xs-7">
-                <input class="form-control form-dashboard-input" type="text">
-              </div>
-            </div>
-            <!-- .row.form-dashboard-row -->
-
-            <div class="row form-dashboard-row">
-              <div class="col-sm-3 col-xs-5">
-                <p class="form-dashboard-label">
-                  Twitter
-                </p>
-              </div>
-              <div class="col-sm-6 col-xs-7">
-                <input class="form-control form-dashboard-input" type="text">
-              </div>
-            </div>
-            <!-- .row.form-dashboard-row -->
-
-            <div class="row form-dashboard-row">
-              <div class="col-sm-3 col-xs-5">
-                <p class="form-dashboard-label">
-                  Website
-                </p>
-              </div>
-              <div class="col-sm-6 col-xs-7">
-                <input class="form-control form-dashboard-input" type="text">
-              </div>
-            </div>
-            <!-- .row.form-dashboard-row -->
-
-            <div class="row form-dashboard-row">
-              <div class="col-sm-3 col-xs-5">
-                <p class="form-dashboard-label">
-                  Bio
+                  Isi Pesan
+                  <span class="req">*</span>
                 </p>
               </div>
               <div class="col-sm-6 col-xs-7">

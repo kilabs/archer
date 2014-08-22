@@ -1,5 +1,5 @@
-<div class="container">
-
+<div class="col-md-9 dashboard">
+  <div class="generic-page">
 	<h1>Term of Condition</h1>
 
 	<h2>SYARAT DAN KETENTUAN LAYANAN Bengkelin.com</h2>
@@ -88,3 +88,5 @@
 														Keterangan Isi/Materi Situs<li>
 													</ul>
 												</div>
+
+</div>

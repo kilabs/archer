@@ -17,6 +17,7 @@ class SiteController extends BackendController
 			// They can be accessed via: index.php?r=site/page&view=FileName
 			'page'=>array(
 				'class'=>'CViewAction',
+				'layout'=>'statis',
 			),
 		);
 	}

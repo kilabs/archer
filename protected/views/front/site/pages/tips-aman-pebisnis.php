@@ -1,4 +1,5 @@
-<div class="container">
+	<div class="col-md-9 dashboard">
+  <div class="generic-page"
 	<h1>Tips Aman</h1>
 	<ul>
 		<li>Berikan informasi yang detail pada iklan anda, agar calon pelanggan</li>
@@ -12,3 +13,4 @@
 
 		<li>Jika Anda memberikan garansi, pastikan bahwa pelanggan telah mengerti pelanggan sudah masuk ke rekening Anda, sebelum Anda memberikan/mengirimkan barang kepada pelanggan. syarat­-syaratnya dan ruang lingkup garansi tersebut agar tidak terjadi salah pengertian.</li>
 	</div>
+		</div></div>
