@@ -13,7 +13,8 @@ return CMap::mergeArray(
                     'register'=>'site/register',
                     'login'=>'site/login',
                     'logout'=>'site/logout',
-                    
+
+                    'site/page/<view:.*?>'=>'site/page',
 					'kategori/<id:.*?>/<slug:.*?>'=>'post/kategori', 
 					'bengkel/<id:.*?>/<slug:.*?>'=>'post/detail', 
 				),

@@ -68,9 +68,9 @@
       <div class="col-md-2 offset-md-1">
         <h4 class="roboto">Bengkelin</h4>
         <ul>
-          <li><a href="#">Tentang Kami</a></li>
-          <li><a href="#">Aturan Penggunaan</a></li>
-          <li><a href="#">Kebijakan Privasi</a></li>
+          <li><a href="<?php echo Yii::app()->createUrl('/site/page',array('view'=>'about')); ?>">Tentang Kami</a></li>
+          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'term')); ?>">Aturan Penggunaan</a></li>
+          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'policy')); ?>">Kebijakan Privasi</a></li>
           <li><a href="#">Berita & Pengumuman</a></li>
         </ul>
       </div>
@@ -79,7 +79,7 @@
         <ul>
           <li><a href="#">Cara Belanja</a></li>
           <li><a href="#">Pembayaran</a></li>
-          <li><a href="#">Tips Berbelanja</a></li>
+          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'tips-aman-pelanggan')); ?>">Tips Berbelanja</a></li>
           <li><a href="#">Keamanan Pembeli</a></li>
         </ul>
       </div>
@@ -88,7 +88,7 @@
         <ul>
           <li><a href="#">Cara Berjualan</a></li>
           <li><a href="#">Keuntungan</a></li>
-          <li><a href="#">Tips Berjualan</a></li>
+          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'tips-aman-pebisnis')); ?>">Tips Berjualan</a></li>
           <li><a href="#">Success Stories</a></li>
         </ul>
       </div>
