@@ -9,45 +9,50 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Login</h1>
 
-<p>Please fill out the following form with your login credentials:</p>
-
-<div class="form">
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'login-form',
-	'enableClientValidation'=>true,
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
+	<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        	<?php $form=$this->beginWidget('CActiveForm', array(
+				'id'=>'login-form',
+				'enableClientValidation'=>true,
+				'clientOptions'=>array(
+					'validateOnSubmit'=>true,
+				),
+				'htmlOptions'=>array('class'=>'clearfix page-form'),
+			)); ?>
+          <h2 class="roboto">Login</h2>
+          <hr>
+          <p>Isikan username dan Password</p>
+          <p>
+		<?php echo $form->textField($model,'username',array('class'=>'form-control','placeholder'=>'username')); ?>
 		<?php echo $form->error($model,'username'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
+	 </p>
+          <p>
+		<?php echo $form->passwordField($model,'password',array('class'=>'form-control','placeholder'=>'password')); ?>
 		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-		</p>
-	</div>
+		   </p>
+          <p class="clearfix">
+            <span class="checkbox pull-left">
+              <?php echo $form->checkBox($model,'rememberMe'); ?>
+              <label>Keep me signed in</label>
+            </span>
+            <input class="pull-right" type="submit" value="Login">
+          </p>
+          <hr>
+          <p class="clearfix">
+            <span class="pull-left">
+              <a href="#">Forgot Password</a>
+            </span>
+            <span class="pull-right">
+              Don't have an account yet?
+              <a href="<?php echo $this->createUrl('site/register'); ?>">Create an account</a>
+            </span>
+          </p>
+        <?php $this->endWidget(); ?>
+        <!-- .page-form -->
+      </div>
+    </div>
+  </div>
 
-	<div class="row rememberMe">
-		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model,'rememberMe'); ?>
-		<?php echo $form->error($model,'rememberMe'); ?>
-	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-</div><!-- form -->
