@@ -88,4 +88,21 @@ class SiteController extends ApiController
 		else
 			$this->sendErrorMessage('Password Lama Tidak Cocok');
 	}
+
+	public function actionProfile(){
+		$member = $this->getMember(@$_POST['token']);
+		$this->send(new ApiSingle($member,1,array(
+			'namaLengkap',
+			'username',
+			'email',
+			'nomorTelepon',
+			'facebook',
+			'twitter',
+			'website',
+			'bio',
+			new ApiCCustom('foto',function($value){
+				return LUpload::raw('Profil',$value,true);
+			}),
+		)));
+	}
 }

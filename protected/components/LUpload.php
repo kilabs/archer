@@ -3,8 +3,8 @@ class LUpload{
 	public static function getUploadPath(){
 		return Yii::getPathOfAlias('webroot').'/upload';
 	}
-	public static function getUploadUrl(){
-		return Yii::app()->getBaseUrl().'/upload';
+	public static function getUploadUrl($abosolute=false){
+		return Yii::app()->getBaseUrl($abosolute).'/upload';
 	}
 	public static function upload($file,$folder,$namaFile=''){
 		if($namaFile == ''){
@@ -13,10 +13,10 @@ class LUpload{
 		$file->saveAs(self::getUploadPath().'/'.$folder.'/'.$namaFile);
 		return $namaFile;
 	}
-	public static function thumbs($folder,$namaFile,$ukuran){
-		return self::getUploadUrl().'/thumbs/'.$folder.'/'.$namaFile.'_'.$ukuran.'.jpg';
+	public static function thumbs($folder,$namaFile,$ukuran,$abosolute=false){
+		return self::getUploadUrl($abosolute).'/thumbs/'.$folder.'/'.$namaFile.'_'.$ukuran.'.jpg';
 	}
-	public static function raw($folder,$namaFile){
-		return self::getUploadUrl().'/'.$folder.'/'.$namaFile;
+	public static function raw($folder,$namaFile,$abosolute=false){
+		return self::getUploadUrl($abosolute).'/'.$folder.'/'.$namaFile;
 	}
 }
