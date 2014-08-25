@@ -41,7 +41,7 @@ class Post extends CActiveRecord
 			array('foto', 'length', 'max'=>64),
 			array('tanggalBuat, tanggalModif, lat, lng, layanan', 'safe'),
 			array('judul, slug, kontent, idKategori', 'required','on'=>'create, update'),
-			array('fotoFile', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>false,'on'=>'create'),
+			array('fotoFile', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true,'on'=>'create'),
 			array('fotoFile', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true,'on'=>'update'),
 
 			// The following rule is used by search().

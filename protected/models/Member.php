@@ -9,6 +9,10 @@
  * @property string $email
  * @property string $password
  * @property string $token
+ * @property string $foto
+ * @property string $namaLengkap
+ * @property string $nomorTelepon
+ * @property string $bio
  */
 class Member extends CActiveRecord
 {
@@ -28,11 +32,16 @@ class Member extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('username, email','required'),
+			array('username, email','unique'),
 			array('username, email, password, facebook, twitter, website', 'length', 'max'=>100),
 			array('token', 'length', 'max'=>32),
+			array('namaLengkap', 'length', 'max'=>255),
+			array('nomorTelepon', 'length', 'max'=>64),
+			array('bio','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, email, password, facebook, twitter, website', 'safe', 'on'=>'search'),
+			array('id, username, email, password, facebook, twitter, website, bio, namaLengkap, nomorTelepon, foto', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,6 +66,12 @@ class Member extends CActiveRecord
 			'username' => 'Username',
 			'email' => 'Email',
 			'password' => 'Password',
+			'namaLengkap'=>'Nama Lengkap',
+			'nomorTelepon'=>'Nomor Telepon',
+			'facebook'=>'Facebook',
+			'twitter'=>'Twitter',
+			'website'=>'Website',
+			'bio'
 		);
 	}
 

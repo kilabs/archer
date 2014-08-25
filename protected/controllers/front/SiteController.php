@@ -130,4 +130,27 @@ class SiteController extends Controller
 			'model'=>$model,
 		));
 	}
+
+	public function actionProfil()
+	{
+		$model = Member::model('ProfilForm')->findByPk(Yii::app()->user->id);
+		if($model === null){
+			$this->redirect('login');
+		}
+
+		if(isset($_POST['ProfilForm'])){
+			$model->attributes = $_POST['ProfilForm'];
+			$model->fotoFile=CUploadedFile::getInstance($model,'fotoFile');
+			if($model->validate()){
+				if($model->fotoFile){
+					$model->foto = LUpload::upload($model->fotoFile,'Profil');
+				}
+				$model->save();
+				$this->refresh();
+			}
+		}
+		$this->render('profil',array(
+			'model'=>$model,
+		));
+	}
 }
