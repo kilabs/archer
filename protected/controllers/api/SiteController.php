@@ -72,4 +72,20 @@ class SiteController extends ApiController
 			$this->sendErrorMessage($error['message']);
 		}
 	}
+
+	public function actionChangePassword(){
+		$member = $this->getMember(@$_POST['token'],'ApiChangePasswordForm');
+		$member->attributes = $_POST;
+		if($member->validatePassword($member->oldPassword)){
+			$member->password = $member->hashPassword($member->newPassword);
+			if($member->save()){
+				$this->sendSuccessMessage('Password Tersimpan');
+			}
+			else{
+				$this->send($member->getErrors(),0);
+			}
+		}
+		else
+			$this->sendErrorMessage('Password Lama Tidak Cocok');
+	}
 }
