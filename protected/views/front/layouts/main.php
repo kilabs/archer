@@ -7,7 +7,7 @@
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Hello - Bengkelin</title>
+  <title>Servis Apapun Ada - Bengkelin</title>
 
   <link href="<?php echo Yii::app()->theme->baseUrl ?>/assets/css/style.css" rel="stylesheet" type="text/css" />
 
