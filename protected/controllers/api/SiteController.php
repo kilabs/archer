@@ -105,4 +105,20 @@ class SiteController extends ApiController
 			}),
 		)));
 	}
+
+	public function actionUpdateProfile(){
+		$member = $this->getMember(@$_POST['token'],'ApiUpdateProfilForm');
+		$member->attributes = @$_POST;
+		$member->fotoFile=CUploadedFile::getInstanceByName('fotoFile');
+		if($member->validate()){
+			if($member->fotoFile){
+				$member->foto = LUpload::upload($member->fotoFile,'Profil');	
+			}
+			$member->save();
+			$this->sendSuccessMessage('Profil Tersimpan');
+		}
+		else{
+			$this->send($member->getErrors(),0);
+		}
+	}
 }
