@@ -94,7 +94,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['FrontLoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+				$this->redirect(array('user/profil'));
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -131,26 +131,5 @@ class SiteController extends Controller
 		));
 	}
 
-	public function actionProfil()
-	{
-		$model = Member::model('ProfilForm')->findByPk(Yii::app()->user->id);
-		if($model === null){
-			$this->redirect('login');
-		}
 
-		if(isset($_POST['ProfilForm'])){
-			$model->attributes = $_POST['ProfilForm'];
-			$model->fotoFile=CUploadedFile::getInstance($model,'fotoFile');
-			if($model->validate()){
-				if($model->fotoFile){
-					$model->foto = LUpload::upload($model->fotoFile,'Profil');
-				}
-				$model->save();
-				$this->refresh();
-			}
-		}
-		$this->render('profil',array(
-			'model'=>$model,
-		));
-	}
 }

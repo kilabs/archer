@@ -1,18 +1,4 @@
-<div class="page">
-    <div class="container page-details page-dashboard">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="sidebar row">
-            <ul class="list-unstyled dashboard-menu">
-              <li class="active"><a href="/profil.html">Edit Profil</a></li>
-              <li><a href="/password.html">Ganti Password</a></li>
-              <li><a href="/lokasi.html">Lokasi</a></li>
-              <li><a href="/galeri.html">Edit Galeri</a></li>
-            </ul>
-          </div>
-          <!-- .sidebar -->
-        </div>
-        <!-- .col-md-3 -->
+
 
         <div class="col-md-9 dashboard">
             <?php $form=$this->beginWidget('CActiveForm', array(
@@ -185,9 +171,4 @@
         </div>
         <!-- .dashboard -->
 
-      </div>
-      <!-- .row -->
-    </div>
-    <!-- .container -->
-  </div>
-  <!-- .page -->
+     

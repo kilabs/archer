@@ -32,8 +32,9 @@
         <?php if (Yii::app()->user->isGuest): ?>
           <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('site/login'); ?>">Login</a>
           <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/register'); ?>">Sign Up</a>    
-        <?php else: ?>
-           <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a>
+        <?php else: ?>        
+           <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('user/profil'); ?>">Dashboard</a>
+           <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a>
         <?php endif; ?>
       </div>
     </div>
@@ -113,7 +114,7 @@
 
 	<script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript"></script>
 	  <script src="http://maps.google.com/maps/api/js" type="text/javascript"></script>
-	  <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/main.js" type="text/javascript"></script>
+    <?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
 
 </body>
 </html>
