@@ -30,28 +30,29 @@
       </div>
       <div class="col-md-3 offset-md-1 btn-group">
         <?php if (Yii::app()->user->isGuest): ?>
-          <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('site/login'); ?>">Login</a>
-          <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/register'); ?>">Sign Up</a>    
-        <?php else: ?>
-           <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a>
-        <?php endif; ?>
-      </div>
-    </div>
-    <!-- .container -->
-  </header>
-  <!-- #top.top -->
-  <div class="navbar">
-    <div class="container">
-      <ul class="nav list-unstyled clearfix">
-        <?php $kategoris = Kategori::model()->findAll('status='.Kategori::STATUS_AKTIF); ?>
-        <?php foreach ($kategoris as $key => $value): ?>
-          <li><a href="<?php echo Yii::app()->createUrl('post/kategori',array('id'=>$value->id,'slug'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
-        <?php endforeach ?>
-      </ul>
-    </div>
+        <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('site/login'); ?>">Login</a>
+        <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/register'); ?>">Sign Up</a>    
+      <?php else: ?>
+      <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('/site/Profil'); ?>">Dashboard</a>
+      <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a>
+    <?php endif; ?>
   </div>
+</div>
+<!-- .container -->
+</header>
+<!-- #top.top -->
+<div class="navbar">
+  <div class="container">
+    <ul class="nav list-unstyled clearfix">
+      <?php $kategoris = Kategori::model()->findAll('status='.Kategori::STATUS_AKTIF); ?>
+      <?php foreach ($kategoris as $key => $value): ?>
+      <li><a href="<?php echo Yii::app()->createUrl('post/kategori',array('id'=>$value->id,'slug'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
+    <?php endforeach ?>
+  </ul>
+</div>
+</div>
 
-  <?php echo $content; ?>
+<?php echo $content; ?>
 
 <div class="bottom-area">
   <div class="container">
@@ -111,9 +112,9 @@
 </div>
 <!-- .bottom-area -->
 
-	<script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript"></script>
-	  <script src="http://maps.google.com/maps/api/js" type="text/javascript"></script>
-	  <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/main.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript"></script>
+<script src="http://maps.google.com/maps/api/js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/main.js" type="text/javascript"></script>
 
 </body>
 </html>
