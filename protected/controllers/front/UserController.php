@@ -6,7 +6,7 @@ class UserController extends Controller
 	public $menuProfils = array(
 		'editProfil'=>array('label'=>'Edit profil','url'=>array('/user/profil')),
 		'gantiPassword'=>array('label'=>'Ganti Password','url'=>array('/user/gantiPassword')),
-		'listBengkel'=>array('label'=>'Dafar Bengkel','url'=>array('/user/daftarBengkel')),
+		'listBengkel'=>array('label'=>'Layanan','url'=>array('/user/daftarBengkel')),
 	);
 
 	public function actionProfil()
