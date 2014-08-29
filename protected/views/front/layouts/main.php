@@ -34,7 +34,7 @@
           <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/register'); ?>">Sign Up</a>    
         <?php else: ?>        
            <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('user/profil'); ?>">Dashboard</a>
-           <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a>
+            <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a>  
         <?php endif; ?>
       </div>
     </div>
