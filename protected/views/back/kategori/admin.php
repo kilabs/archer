@@ -38,7 +38,12 @@ $this->adminTitle = 'List Kategori';
                         'value'=>'$data->getStatus()',
                     ),
             		'urut',
-            		'slug',
+          		 array(
+                      'filter'=>Kategori::listParent(),
+                      'name'=>'idParent',
+                      'value'=>'$data->parentName()',
+                      'header'=>'Parent',
+                  ),
             		array(
             			'class'=>'CButtonColumn',
                          'buttons'=>array (

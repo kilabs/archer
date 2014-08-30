@@ -41,6 +41,14 @@
 		</div>
 	</div>
 
+     <div class="form-group">            
+        <?php echo $form->labelEx($model,'parent.nama',array('class'=>'col-sm-2 control-label')); ?>            
+        <div class="col-sm-10">
+            <?php echo $form->dropDownList($model,'idParent',Kategori::listParent($model->id),array('maxlength'=>200,'class'=>'form-control')); ?>
+            <?php echo $form->error($model,'idParent'); ?>
+        </div>                            
+    </div>
+
 	<div class="form-group">            
         <?php echo $form->labelEx($model,'slug',array('class'=>'col-sm-2 control-label')); ?>            
         <div class="col-sm-10">

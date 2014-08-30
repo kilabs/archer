@@ -41,7 +41,7 @@ class Kategori extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('status, urut', 'numerical', 'integerOnly'=>true),
+			array('status, urut, idParent', 'numerical', 'integerOnly'=>true),
 			array('nama, slug', 'length', 'max'=>200),
 			array('nama','required'),
 			array('imageFile', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true,'on'=>'create'),
@@ -61,6 +61,8 @@ class Kategori extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'parent'=>array(self::BELONGS_TO,'Kategori','idParent'),
+			'childs'=>array(self::HAS_MANY,'Kategori','idParent'),
 		);
 	}
 
@@ -75,6 +77,8 @@ class Kategori extends CActiveRecord
 			'status' => 'Status',
 			'urut' => 'Urut',
 			'slug' => 'Slug',
+			'idParent' => 'ID Parent',
+			'parent.nama' => 'Parent',
 		);
 	}
 
@@ -94,6 +98,7 @@ class Kategori extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('urut',$this->urut);
 		$criteria->compare('slug',$this->slug,true);
+		$criteria->compare('idParent',$this->idParent);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -110,5 +115,67 @@ class Kategori extends CActiveRecord
 	public function getStatus(){
 		$ar = self::listStatus();
 		return @$ar[$this->status];
+	}
+
+	public static function fetchChild($id,$sub=0,$except=null){
+		$data = array();
+		$criteria = new CDbCriteria();
+		$criteria->addCondition('idParent = :id');
+		$criteria->params[':id'] = $id;
+		$criteria->order = 'urut ASC';
+		$kategoris = Kategori::model()->findAll($criteria);
+		foreach ($kategoris as $key => $value) {
+			if($value->id === $except){
+				continue;
+			}
+			$data[] = array(
+				'id'=>$value->id,
+				'nama'=>$value->nama,
+				'sub'=>$sub,
+			);
+			if(count($value->childs) > 0){
+				foreach (self::fetchChild($value->id,$sub+1,$except) as $key2 => $value2) {
+					$data[] = $value2;
+				}
+			}
+		}
+		return $data;
+	}
+	public static function listParent($except=null){
+		$ret = array(
+			0=>'No Parent',
+		);
+		$arrs = self::fetchChild(0,0,$except);
+		foreach ($arrs as $key => $value) {
+			$id = $value['id'];
+			$text = '|---';
+			for ($i = 0 ; $i < $value['sub'];$i++) {
+				$text.='---';
+			}
+			$text.=$value['nama'];
+			$ret[$id] = $text;
+		}
+		return $ret;
+	}
+
+	protected function beforeSave(){
+		if($this->isNewRecord){
+			if($this->idParent === null){
+				$this->idParent = 0;
+			}
+			if($this->aktif === null){
+				$this->aktif = 1;
+			}
+		}
+		return parent::beforeSave();
+	}
+
+	public function parentName(){
+		if($this->idParent == 0){
+			return 'No Parent';
+		}
+		else{
+			return @$this->parent->nama;
+		}
 	}
 }
