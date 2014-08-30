@@ -163,9 +163,6 @@ class Kategori extends CActiveRecord
 			if($this->idParent === null){
 				$this->idParent = 0;
 			}
-			if($this->aktif === null){
-				$this->aktif = 1;
-			}
 		}
 		return parent::beforeSave();
 	}
