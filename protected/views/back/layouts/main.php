@@ -343,7 +343,7 @@
                     <ul class="collapse" id="component-nav">
                        
                         <li class=""><a href="<?php echo Yii::app()->createUrl('kategori'); ?>"><i class="icon-folder-open"></i> Kategori </a></li>
-                        <li class=""><a href="<?php echo Yii::app()->createUrl('post'); ?>"><i class="icon-folder-open"></i> Post </a></li>
+                        <li class=""><a href="<?php echo Yii::app()->createUrl('member'); ?>"><i class="icon-folder-open"></i> Member </a></li>
                     </ul>
                 </li>
                
