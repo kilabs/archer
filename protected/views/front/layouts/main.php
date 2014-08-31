@@ -10,7 +10,16 @@
   <title>Servis Apapun Ada - Bengkelin</title>
 
   <link href="<?php echo Yii::app()->theme->baseUrl ?>/assets/css/style.css" rel="stylesheet" type="text/css" />
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-54338941-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
   
 
 </head>
@@ -30,27 +39,27 @@
       </div>
       <div class="col-md-3 offset-md-1 btn-group">
         <?php if (Yii::app()->user->isGuest): ?>
-          <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('site/login'); ?>">Login</a>
-          <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/register'); ?>">Sign Up</a>    
-        <?php else: ?>        
-           <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('user/profil'); ?>">Dashboard</a>
-            <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a>  
-        <?php endif; ?>
-      </div>
-    </div>
-    <!-- .container -->
-  </header>
-  <!-- #top.top -->
-  <div class="navbar">
-    <div class="container">
-      <ul class="nav list-unstyled clearfix">
-        <?php $kategoris = Kategori::model()->findAll('status='.Kategori::STATUS_AKTIF); ?>
-        <?php foreach ($kategoris as $key => $value): ?>
-          <li><a href="<?php echo Yii::app()->createUrl('post/kategori',array('id'=>$value->id,'slug'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
-        <?php endforeach ?>
-      </ul>
-    </div>
+        <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('site/login'); ?>">Login</a>
+        <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/register'); ?>">Sign Up</a>    
+      <?php else: ?>        
+      <a class="btn half half-left" href="<?php echo Yii::app()->createUrl('user/profil'); ?>">Dashboard</a>
+      <a class="btn btn-white half half-right" href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a>  
+    <?php endif; ?>
   </div>
+</div>
+<!-- .container -->
+</header>
+<!-- #top.top -->
+<div class="navbar">
+  <div class="container">
+    <ul class="nav list-unstyled clearfix">
+      <?php $kategoris = Kategori::model()->findAll('status='.Kategori::STATUS_AKTIF); ?>
+      <?php foreach ($kategoris as $key => $value): ?>
+      <li><a href="<?php echo Yii::app()->createUrl('post/kategori',array('id'=>$value->id,'slug'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
+    <?php endforeach ?>
+  </ul>
+</div>
+</div>
 <!-- .container -->
 
 <?php echo $content; ?>
@@ -113,9 +122,9 @@
 </div>
 <!-- .bottom-area -->
 
-	<script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript"></script>
-	  <script src="http://maps.google.com/maps/api/js" type="text/javascript"></script>
-    <?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
+<script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript"></script>
+<script src="http://maps.google.com/maps/api/js" type="text/javascript"></script>
+<?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
 
 </body>
 </html>
