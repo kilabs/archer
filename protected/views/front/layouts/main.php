@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+  <meta name="google-site-verification" content="2X55Ehsp6e9A3R2AoBFXYWs9EHCKDZPXdACGxv_xVss" />
   <title>Servis Apapun Ada - Bengkelin</title>
 
   <link href="<?php echo Yii::app()->theme->baseUrl ?>/assets/css/style.css" rel="stylesheet" type="text/css" />
