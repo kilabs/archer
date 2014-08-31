@@ -282,7 +282,7 @@
                             <li><a href="#"><i class="icon-gear"></i> Settings </a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.html"><i class="icon-signout"></i> Logout </a>
+                            <li><a href="<?php echo Yii::app()->createUrl('/site/logout'); ?>"><i class="icon-signout"></i> Logout </a>
                             </li>
                         </ul>
 
@@ -305,7 +305,7 @@
                 </a>
                 <br />
                 <div class="media-body">
-                    <h5 class="media-heading"> Joe Romlin</h5>
+                    <h5 class="media-heading"> <?php echo Yii::app()->user->name; ?></h5>
                     <ul class="list-unstyled user-info">
                         
                         <li>
@@ -347,7 +347,7 @@
                     </ul>
                 </li>
                
-                <li><a href="login.html"><i class="icon-signout"></i> Logout </a></li>
+                <li><a href="<?php echo Yii::app()->createUrl('/site/logout'); ?>"><i class="icon-signout"></i> Logout </a></li>
 
             </ul>
 
