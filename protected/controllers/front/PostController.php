@@ -28,6 +28,22 @@ class PostController extends Controller
 		));
 	}
 
+	public function actionList($kategori=null){
+		$kategori = kategori::model()->find('slug = :slug',array(
+			':slug'=>$kategori,
+		));
+
+		$criteria = new CDbCriteria();
+		$criteria->limit = 2;
+		$dataProvider=new CActiveDataProvider('Post',array(
+			'criteria'=>$criteria,
+		));
+
+		$this->render('list',array(
+			'kategori'=>$kategori,
+			'dataProvider'=>$dataProvider,
+		));
+	}
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

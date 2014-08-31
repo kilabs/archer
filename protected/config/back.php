@@ -2,6 +2,7 @@
 return CMap::mergeArray(
     require(dirname(__FILE__).'/main.php'),
     array(
+    	'name'=>'Bengkelin Admin',
        'theme'=>'admin',
        'components'=>array(
 			'urlManager'=>array(

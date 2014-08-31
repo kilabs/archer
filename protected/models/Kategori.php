@@ -43,7 +43,8 @@ class Kategori extends CActiveRecord
 		return array(
 			array('status, urut, idParent', 'numerical', 'integerOnly'=>true),
 			array('nama, slug', 'length', 'max'=>200),
-			array('nama','required'),
+			array('nama, slug','required'),
+			array('slug','unique'),
 			array('imageFile', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true,'on'=>'create'),
 			array('imageFile', 'required','on'=>'create'),
 			

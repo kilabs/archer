@@ -21,7 +21,7 @@
           $kategoris = Kategori::model()->findAll($criteria);
           foreach ($kategoris as $key => $value): ?>
           <div class="col-md-2 category-thumbnail">
-            <a href="<?php echo Yii::app()->createUrl('post/kategori',array('id'=>$value->id,'slug'=>$value->slug)); ?>">
+            <a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>">
               <img alt="" class="block" src="<?php echo LUpload::thumbs('Kategori',$value->image,'200x200'); ?>">
               <h5 class="roboto text-center"><?php echo CHtml::encode($value->nama); ?></h5>
             </a>

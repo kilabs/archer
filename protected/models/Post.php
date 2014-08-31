@@ -40,7 +40,8 @@ class Post extends CActiveRecord
 			array('alamat, kota, noTelp, fbText, fbLink, twitterText, twitterLink', 'length', 'max'=>150),
 			array('foto', 'length', 'max'=>64),
 			array('tanggalBuat, tanggalModif, lat, lng, layanan', 'safe'),
-			array('judul, kontent, idKategori', 'required','on'=>'create, update'),
+			array('judul, kontent, idKategori', 'required','on'=>'create'),
+			array('judul, idKategori', 'required','on'=>'update'),
 			array('fotoFile', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true,'on'=>'create'),
 			array('fotoFile', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true,'on'=>'update'),
 
@@ -64,6 +65,8 @@ class Post extends CActiveRecord
 			'totalReview'=>array(self::STAT,'Review','idPost'),
 			'reviews'=>array(self::HAS_MANY,'Review','idPost'),
 			'member'=>array(self::BELONGS_TO,'Member','idMember'),
+			'cover'=>array(self::BELONGS_TO,'PostGalery','galeryId'),
+			'lokasi'=>array(self::BELONGS_TO,'Lokasi','idLokasi'),
 		);
 	}
 

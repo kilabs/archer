@@ -45,6 +45,7 @@ class PostGalery extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'post'=>array(self::BELONGS_TO,'Post','idPost'),
 		);
 	}
 
@@ -96,5 +97,16 @@ class PostGalery extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	protected function afterSave(){
+		if($this->post->galeryId == null){
+			$this->post->galeryId = $this->id;
+			if(!$this->post->save()){
+				print_r($this->post->getErrors());
+				exit;	
+			}
+		}
+		return parent::afterSave();
 	}
 }

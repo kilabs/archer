@@ -4,6 +4,7 @@ return CMap::mergeArray(
     array(
         // Put front-end settings there
         // (for example, url rules).
+        'name'=>'Bengkelin',
         'theme'=>'front',
         'components'=>array(
         	'urlManager'=>array(
@@ -15,7 +16,7 @@ return CMap::mergeArray(
                     'logout'=>'site/logout',
 
                     'site/page/<view:.*?>'=>'site/page',
-					'kategori/<id:.*?>/<slug:.*?>'=>'post/kategori', 
+					'kategori/<kategori:.*?>/'=>'post/list', 
 					'bengkel/<id:.*?>/<slug:.*?>'=>'post/detail', 
 				),
 			),
