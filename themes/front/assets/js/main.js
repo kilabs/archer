@@ -124,7 +124,7 @@ $.fn.accordion = function() {
 
 
 $(document).ready(function() {
-	
+
 	$('.accordion').accordion();
 
 });
