@@ -93,7 +93,7 @@
             </p>
             <hr>
             <p>
-              orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
+              <?php echo CHtml::encode($value->kontent); ?>
             </p>
          <!--    <p>
               <span class="listing-rating">
