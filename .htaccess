@@ -5,7 +5,7 @@ IndexIgnore */*
 RewriteEngine on
 
 # Make the backend accessible via url: http://site/backend.
-RewriteRule ^admin admin.php
+RewriteRule ^albarka2014 admin.php
 RewriteRule ^api api.php
 
 # If a directory or a file exists, use it directly.
