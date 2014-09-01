@@ -86,7 +86,7 @@
               <?php echo CHtml::encode($value->layanan); ?>
             </p>
             <hr>
-            <p>
+         <!--    <p>
               <span class="listing-rating">
                 <i class="icon icon-star"></i>
                 <i class="icon icon-star"></i>
@@ -95,7 +95,7 @@
                 <i class="icon icon-star-o"></i>
               </span>
               <span class="grey">17 review</span>
-            </p>
+            </p> -->
           </div>
         </div>
       </div>
