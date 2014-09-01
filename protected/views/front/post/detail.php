@@ -173,21 +173,21 @@
 </div>
 <!-- .container.page-details -->
 
-<!-- <div class="container page-addons">
+<div class="container page-addons">
   <div class="row">
     <div class="col-md-7 shop-reviews">
-      <h4><?php //echo $post->totalReview; ?> Reviews</h4>
+      <h4><?php echo $post->totalReview; ?> Reviews</h4>
       <div class="ads-728x90">
         <a class="block" href="#">
-          <img alt="" class="block" src="<?php //echo Yii::app()->theme->baseUrl ?>/uploads/ads728x90.png">
+          <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/ads728x90.png">
         </a>
       </div>
       <ul class="reviews list-unstyled">
-        <?php //foreach ($post->reviews as $key => $value): ?>  
+        <?php foreach ($post->reviews as $key => $value): ?>  
         <li class="review"><div class="row">
           <div class="col-sm-3 review-user text-center">
-            <img alt="" class="avatar" src="<?php //echo Yii::app()->theme->baseUrl ?>/uploads/ava.jpg">
-            <p><a href="#"><?php //echo $value->member->username; ?></a></p>
+            <img alt="" class="avatar" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/ava.jpg">
+            <p><a href="#"><?php echo $value->member->username; ?></a></p>
           </div>
           <div class="col-sm-9 review-content">
             <div class="clearfix">
@@ -198,37 +198,37 @@
                 <i class="icon icon-star"></i>
                 <i class="icon icon-star-o"></i>
               </span>
-              <time class="pull-right grey"><?php //echo date("d M Y",strtotime($value->time)); ?></time>
+              <time class="pull-right grey"><?php echo date("d M Y",strtotime($value->time)); ?></time>
             </div>
             <br>
             <div class="review-entry">
-              <p><?php //echo $value->kontent; ?></p>
+              <p><?php echo $value->kontent; ?></p>
             </div>
           </div>
         </div>
       </li>
-    <?php// endforeach; ?>
+    <?php endforeach; ?>
   </ul>
-  <?php //if (!Yii::app()->user->isGuest): ?>
+  <?php if (!Yii::app()->user->isGuest): ?>
   <h4>Leave Reviews</h4>
-  <?php //$form=$this->beginWidget('CActiveForm', array(
-    // 'id'=>'post-form',
-    // // Please note: When you enable ajax validation, make sure the corresponding
-    // // controller action is handling ajax validation correctly.
-    // // There is a call to performAjaxValidation() commented in generated controller code.
-    // // See class documentation of CActiveForm for details on this.
-    // 'enableAjaxValidation'=>false,
-    //   'htmlOptions'=>array('class'=>'form-horizontal', 'role'=>'form','enctype'=>'multipart/form-data'),
+  <?php $form=$this->beginWidget('CActiveForm', array(
+    'id'=>'post-form',
+    // Please note: When you enable ajax validation, make sure the corresponding
+    // controller action is handling ajax validation correctly.
+    // There is a call to performAjaxValidation() commented in generated controller code.
+    // See class documentation of CActiveForm for details on this.
+    'enableAjaxValidation'=>false,
+      'htmlOptions'=>array('class'=>'form-horizontal', 'role'=>'form','enctype'=>'multipart/form-data'),
   )); ?>
-  <?php //if ($newReview->hasErrors()): ?>
+  <?php if ($newReview->hasErrors()): ?>
     <div class="alert alert-info">
-    <?php //echo $form->errorSummary($newReview); ?>
+    <?php echo $form->errorSummary($newReview); ?>
   </div>
-  <?php //endif ?>
+  <?php endif ?>
   
     <p>
-      <?php// echo $form->textArea($newReview,'kontent',array('class'=>'form-control')); ?>
-      <?php// echo $form->hiddenField($newReview,'rating',array('id'=>'hidden-rating')); ?>
+      <?php echo $form->textArea($newReview,'kontent',array('class'=>'form-control')); ?>
+      <?php echo $form->hiddenField($newReview,'rating',array('id'=>'hidden-rating')); ?>
     </p>
     <p>
       <span class="listing-rating pull-left" id="input-rating">
@@ -243,9 +243,9 @@
     <p>
       <input type="submit" value="Kirim Review">
     </p>
-  <?php //$this->endWidget(); ?>
-  <?php// endif ?>
-</div> -->
+  <?php $this->endWidget(); ?>
+  <?php endif ?>
+</div>
 <!-- .col-md-8.shop-reviews -->
 
 <!-- <div class="col-md-5 shop-ads">
