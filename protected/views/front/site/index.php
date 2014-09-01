@@ -17,6 +17,8 @@
         <!-- .titling -->
         <?php 
           $criteria = new CDbCriteria();
+          $criteria->addCondition('idParent = :idParent');
+          $criteria->params[':idParent'] = 0;
           $criteria->limit = 5;
           $kategoris = Kategori::model()->findAll($criteria);
           foreach ($kategoris as $key => $value): ?>
