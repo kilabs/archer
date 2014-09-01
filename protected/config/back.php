@@ -9,9 +9,9 @@ return CMap::mergeArray(
 				'urlFormat'=>'path',
 				'showScriptName'=>false,
 				'rules'=>array(
-					'admin'=>'site/index',
-					'admin/<_c>'=>'<_c>',
-					'admin/<_c>/<_a>'=>'<_c>/<_a>',
+					'albarka2014'=>'site/index',
+					'albarka2014/<_c>'=>'<_c>',
+					'albarka2014/<_c>/<_a>'=>'<_c>/<_a>',
 				),
 			),
 		),
