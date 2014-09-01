@@ -2,11 +2,10 @@
       <div class="verified-badge">
         <i class="icon icon-check"></i>
       </div>
-      <div class="premium-ribbon t_u">Premium</div>
       <div class="col-md-4 listing-image-outer">
         <a href="#" class="listing-image block">
           <?php if (isset($data->cover) and $data->cover != null): ?>
-            <img src="<?php echo LUpload::thumbs('PostGalery',$data->cover->image,'160x112'); ?>" class="block" alt="">
+            <img src="<?php echo LUpload::thumbs('PostGalery',$data->cover->image,'160x112'); ?>" class="block" alt="<?php echo CHtml::encode($data->judul); ?>">
           <?php endif ?>
         </a>
       </div>
