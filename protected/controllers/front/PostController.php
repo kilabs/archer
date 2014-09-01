@@ -37,9 +37,6 @@ class PostController extends Controller
 		$criteria->limit = 2;
 		$dataProvider=new CActiveDataProvider('Post',array(
 			'criteria'=>$criteria,
-			'pagination'=>array(
-				'pageSize'=>1,
-			),
 		));
 
 		$this->render('list',array(
