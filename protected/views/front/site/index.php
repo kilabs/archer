@@ -17,6 +17,8 @@
         <!-- .titling -->
         <?php 
           $criteria = new CDbCriteria();
+          $criteria->addCondition('idParent = :idParent');
+          $criteria->params[':idParent'] = 0;
           $criteria->limit = 5;
           $kategoris = Kategori::model()->findAll($criteria);
           foreach ($kategoris as $key => $value): ?>
@@ -64,9 +66,12 @@
           <div class="verified-badge">
             <i class="icon icon-check"></i>
           </div>
-          <div class="premium-ribbon t_u">Premium</div>
           <a class="listing-image block" href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug)); ?>">
-            <img alt="" class="block" src="<?php echo LUpload::thumbs('Post',$value->foto,'615x430'); ?>">
+            <?php if (isset($value->cover) and $value->cover != null): ?>
+              <img src="<?php echo LUpload::thumbs('PostGalery',@$value->cover->image,'615x430'); ?>" class="block" alt="">
+            <?php else: ?>
+              <img alt="" class="block" src="">
+            <?php endif ?>
           </a>
           <div class="listing-info">
             <h4 class="roboto">
@@ -87,7 +92,7 @@
               <?php echo CHtml::encode($value->layanan); ?>
             </p>
             <hr>
-            <p>
+         <!--    <p>
               <span class="listing-rating">
                 <i class="icon icon-star"></i>
                 <i class="icon icon-star"></i>
@@ -96,7 +101,7 @@
                 <i class="icon icon-star-o"></i>
               </span>
               <span class="grey">17 review</span>
-            </p>
+            </p> -->
           </div>
         </div>
       </div>

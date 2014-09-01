@@ -29,7 +29,7 @@ class PostController extends Controller
 	}
 
 	public function actionList($kategori=null){
-		$kategori = kategori::model()->find('slug = :slug',array(
+		$kategori = Kategori::model()->find('slug = :slug',array(
 			':slug'=>$kategori,
 		));
 
