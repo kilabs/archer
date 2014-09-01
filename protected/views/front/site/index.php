@@ -93,7 +93,7 @@
             </p>
             <hr>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ips... 
+              <?php echo CHtml::encode($value->profile); ?> 
             </p>
          <!--    <p>
               <span class="listing-rating">
