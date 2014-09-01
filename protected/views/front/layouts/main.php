@@ -55,8 +55,8 @@
     <ul class="nav list-unstyled clearfix">
       <?php $kategoris = Kategori::model()->findAll('status='.Kategori::STATUS_AKTIF); ?>
       <?php foreach ($kategoris as $key => $value): ?>
-      <li><a href="<?php echo Yii::app()->createUrl('post/kategori',array('id'=>$value->id,'slug'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
-    <?php endforeach ?>
+        <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
+      <?php endforeach ?>
   </ul>
 </div>
 </div>
