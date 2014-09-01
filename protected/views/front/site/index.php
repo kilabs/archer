@@ -78,7 +78,7 @@
               <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug)); ?>"><?php echo CHtml::encode($value->judul); ?></a>
             </h4>
             <p class="clearfix">
-              <a class="pull-left listing-category" href="<?php echo Yii::app()->createUrl('post/kategori',array('id'=>$value->kategori->id,'slug'=>$value->kategori->slug)); ?>">
+              <a class="pull-left listing-category" href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->kategori->slug)); ?>">
                 <i class="icon icon-folder"></i>
                 <?php echo CHtml::encode($value->kategori->nama); ?>
               </a>

@@ -3,7 +3,7 @@
         <i class="icon icon-check"></i>
       </div>
       <div class="col-md-4 listing-image-outer">
-        <a href="#" class="listing-image block">
+        <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$data->id,'slug'=>$data->slug)); ?>" class="listing-image block">
           <?php if (isset($data->cover) and $data->cover != null): ?>
             <img src="<?php echo LUpload::thumbs('PostGalery',$data->cover->image,'160x112'); ?>" class="block" alt="<?php echo CHtml::encode($data->judul); ?>">
           <?php endif ?>
@@ -15,7 +15,7 @@
             <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$data->id,'slug'=>$data->slug)); ?>"><?php echo CHtml::encode($data->judul); ?></a>
           </h4>
           <p class="clearfix">
-            <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$data->id,'slug'=>$data->slug)); ?>" class="pull-left listing-category">
+            <a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$data->kategori->slug)); ?>" class="pull-left listing-category">
               <i class="icon icon-folder"></i>
               <?php echo CHtml::encode(@$data->kategori->nama); ?>
             </a>
