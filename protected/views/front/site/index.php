@@ -66,7 +66,7 @@
           <div class="verified-badge">
             <i class="icon icon-check"></i>
           </div>
-          <a class="listing-image block" href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug)); ?>">
+          <a class="listing-image block" href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug ? $value->slug : '-')); ?>">
             <?php if (isset($value->cover) and $value->cover != null): ?>
               <img src="<?php echo LUpload::thumbs('PostGalery',@$value->cover->image,'615x430'); ?>" class="block" alt="">
             <?php else: ?>
@@ -75,7 +75,7 @@
           </a>
           <div class="listing-info">
             <h4 class="roboto">
-              <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug)); ?>"><?php echo CHtml::encode($value->judul); ?></a>
+              <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug ? $value->slug : '-')); ?>"><?php echo CHtml::encode($value->judul); ?></a>
             </h4>
             <p class="clearfix">
               <a class="pull-left listing-category" href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->kategori->slug)); ?>">
