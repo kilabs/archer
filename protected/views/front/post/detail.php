@@ -116,8 +116,8 @@
           </div>
         </div>
       </div>
-    </div> -->
-<!--     <div class="col-md-4"><div class="listing clearfix">
+    </div>
+    <div class="col-md-4"><div class="listing clearfix">
       <div class="col-md-3 listing-image-outer">
         <a class="listing-image block" href="#">
           <img alt="" class="block" src="<?php //echo Yii::app()->theme->baseUrl ?>/uploads/mtb.jpg">
@@ -140,8 +140,8 @@
           </p>
         </div>
       </div>
+    </div>
     </div> -->
-  </div>
   <div class="col-md-4"><div class="listing clearfix">
     <div class="col-md-3 listing-image-outer">
       <a class="listing-image block" href="#">
