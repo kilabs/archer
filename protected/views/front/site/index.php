@@ -63,9 +63,9 @@
           $posts = Post::model()->findAll($criteria); ?>
         <?php foreach ($posts as $key => $value): ?>
         <div class="col-md-4"><div class="listing">
-          <div class="verified-badge">
+<!--           <div class="verified-badge">
             <i class="icon icon-check"></i>
-          </div>
+          </div> -->
           <a class="listing-image block" href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug ? $value->slug : '-')); ?>">
             <?php if (isset($value->cover) and $value->cover != null): ?>
               <img src="<?php echo LUpload::thumbs('PostGalery',@$value->cover->image,'615x430'); ?>" class="block" alt="">
@@ -92,6 +92,9 @@
               <?php echo CHtml::encode($value->layanan); ?>
             </p>
             <hr>
+            <p>
+              orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
+            </p>
          <!--    <p>
               <span class="listing-rating">
                 <i class="icon icon-star"></i>
