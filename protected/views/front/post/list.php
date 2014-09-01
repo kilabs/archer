@@ -48,56 +48,30 @@
           </div>
         </div>
       </form>
-      <div class="row products-row">
           <?php
             $this->widget('zii.widgets.CListView', array(
+              'itemsCssClass'=>'row products-row',
+              'pagerCssClass'=>'pagination',
+              'cssFile'=>false,
+              'pager'=>array(    
+                'cssFile'=>false,
+                'internalPageCssClass'=>'',
+                'selectedPageCssClass'=>'current',
+                 'header'=>'',
+                 'firstPageLabel'=>'<i class="icon icon-chevron-left"></i>',
+                 'lastPageLabel'=>'<i class="icon icon-chevron-right"></i>',
+                 'prevPageLabel'=>'<',
+                 'nextPageLabel'=>'>',
+                     'selectedPageCssClass' => 'active',         
+                     'hiddenPageCssClass' => '',                        
+                     'htmlOptions'=>array(
+                         'class'=>'nav list-inline',
+                     ),                  
+                 ),  
                 'summaryText'=>false,
                 'dataProvider'=>$dataProvider,
                 'itemView'=>'_post', 
               )); 
             ?>
-      </div>
-      <div class="pagination">
-        <div class="row">
-          <div class="col-sm-8">
-            <ul class="nav list-inline">
-              <li>
-                <span class="disabled">
-                  <i class="icon icon-chevron-left"></i>
-                </span>
-              </li>
-              <li>
-                <span class="current">
-                  1
-                </span>
-              </li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">6</a></li>
-              <li><a href="#">7</a></li>
-              <li><a href="#">8</a></li>
-              <li><a href="#">9</a></li>
-              <li><a href="#">10</a></li>
-              <li>
-                <a href="#">
-                  <i class="icon icon-chevron-right"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-sm-4">
-            <form>
-              <label for="perPageItem">Item per halaman</label>
-              <select id="perPageItem" class="form-control">
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
-              </select>
-            </form>
-          </div>
-        </div>
-      </div>
   </div>
 </div>
