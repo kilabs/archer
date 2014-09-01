@@ -13,10 +13,10 @@
       <div class="col-md-8">
         <div class="listing-info">
           <h4 class="roboto">
-            <a href="#"><?php echo CHtml::encode($data->judul); ?></a>
+            <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$data->id,'slug'=>$data->slug)); ?>"><?php echo CHtml::encode($data->judul); ?></a>
           </h4>
           <p class="clearfix">
-            <a href="#" class="pull-left listing-category">
+            <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$data->id,'slug'=>$data->slug)); ?>" class="pull-left listing-category">
               <i class="icon icon-folder"></i>
               <?php echo CHtml::encode(@$data->kategori->nama); ?>
             </a>

@@ -70,7 +70,7 @@
           </a>
           <div class="listing-info">
             <h4 class="roboto">
-              <a href="#"><?php echo CHtml::encode($value->judul); ?></a>
+              <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug)); ?>"><?php echo CHtml::encode($value->judul); ?></a>
             </h4>
             <p class="clearfix">
               <a class="pull-left listing-category" href="<?php echo Yii::app()->createUrl('post/kategori',array('id'=>$value->kategori->id,'slug'=>$value->kategori->slug)); ?>">
