@@ -55,9 +55,14 @@
 <div class="navbar">
   <div class="container">
     <ul class="nav list-unstyled clearfix">
-      <?php $kategoris = Kategori::model()->with(array('childs'=>array(
+      <?php 
+      $criteria = new CDbCriteria();
+      $criteria->with = array('childs'=>array(
         'on'=>'childs.status = '.Kategori::STATUS_AKTIF
-      )))->findAll('t.status='.Kategori::STATUS_AKTIF.' and t.idParent=0'); ?>
+      ));
+      $criteria->addCondition('t.status='.Kategori::STATUS_AKTIF.' and t.idParent=0');
+      $criteria->limit = 8;
+      $kategoris = Kategori::model()->findAll($criteria); ?>
       <?php foreach ($kategoris as $key => $value): ?>
         <?php if (count($value->childs) == 0): ?>
           <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
