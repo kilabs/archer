@@ -19,7 +19,7 @@
           $criteria = new CDbCriteria();
           $criteria->addCondition('idParent = :idParent');
           $criteria->params[':idParent'] = 0;
-          $criteria->limit = 5;
+          $criteria->limit = 6;
           $kategoris = Kategori::model()->findAll($criteria);
           foreach ($kategoris as $key => $value): ?>
           <div class="col-md-2 category-thumbnail">
