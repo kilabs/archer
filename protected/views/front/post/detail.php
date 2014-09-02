@@ -248,22 +248,22 @@
 </div>
 <!-- .col-md-8.shop-reviews -->
 
-<div class="col-md-5 shop-ads">
+<!-- <div class="col-md-5 shop-ads">
   <div class="pull-left">
     <div class="ads-160x600">
       <a class="block" href="#">
-        <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/ads160x600.png">
+        <img alt="" class="block" src="<?php //echo Yii::app()->theme->baseUrl ?>/uploads/ads160x600.png">
       </a>
     </div>
   </div>
   <div class="pull-right">
     <div class="ads-300x250">
       <a class="block" href="#">
-        <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/ads300x250.png">
+        <img alt="" class="block" src="<?php //echo Yii::app()->theme->baseUrl ?>/uploads/ads300x250.png">
       </a>
     </div>
   </div>
-</div>
+</div> -->
 </div>
 </div>
 <!-- .container.page-addons -->

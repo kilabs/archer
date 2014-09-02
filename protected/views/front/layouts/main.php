@@ -7,7 +7,9 @@
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="google-site-verification" content="2X55Ehsp6e9A3R2AoBFXYWs9EHCKDZPXdACGxv_xVss" />
-  <title>Servis Apapun Ada - Bengkelin</title>
+  <title>Bengkelin - Jasa dan Servis Apapun Ada</title>
+  <meta name="description" content="Portal jasa dan servis, mulai jasa sewa hingga semua jenis servis atau layanan"/>
+  <meta name="keyword" content="jasa sewa diesel, servis ac, servis mobil, jasa bengkel, servis bengkel">
 
   <link href="<?php echo Yii::app()->theme->baseUrl ?>/assets/css/style.css" rel="stylesheet" type="text/css" />
   <script>
@@ -55,10 +57,10 @@
     <ul class="nav list-unstyled clearfix">
       <?php $kategoris = Kategori::model()->findAll('status='.Kategori::STATUS_AKTIF); ?>
       <?php foreach ($kategoris as $key => $value): ?>
-        <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
-      <?php endforeach ?>
-    </ul>
-  </div>
+      <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
+		<?php endforeach ?>
+	  </ul>
+	</div>
 </div>
 <!-- .container -->
 

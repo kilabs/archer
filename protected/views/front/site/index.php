@@ -19,7 +19,7 @@
           $criteria = new CDbCriteria();
           $criteria->addCondition('idParent = :idParent');
           $criteria->params[':idParent'] = 0;
-          $criteria->limit = 5;
+          $criteria->limit = 6;
           $kategoris = Kategori::model()->findAll($criteria);
           foreach ($kategoris as $key => $value): ?>
           <div class="col-md-2 category-thumbnail">
@@ -63,22 +63,22 @@
           $posts = Post::model()->findAll($criteria); ?>
         <?php foreach ($posts as $key => $value): ?>
         <div class="col-md-4"><div class="listing">
-          <div class="verified-badge">
+<!--           <div class="verified-badge">
             <i class="icon icon-check"></i>
-          </div>
-          <a class="listing-image block" href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug)); ?>">
+          </div> -->
+          <a class="listing-image block" href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug ? $value->slug : '-')); ?>">
             <?php if (isset($value->cover) and $value->cover != null): ?>
-              <img src="<?php echo LUpload::thumbs('PostGalery',@$value->cover->image,'615x430'); ?>" class="block" alt="">
+              <img src="<?php echo LUpload::thumbs('PostGalery',@$value->cover->image,'615x430'); ?>" class="block" alt="<?php echo CHtml::encode($value->judul); ?>">
             <?php else: ?>
               <img alt="" class="block" src="">
             <?php endif ?>
           </a>
           <div class="listing-info">
             <h4 class="roboto">
-              <a href="#"><?php echo CHtml::encode($value->judul); ?></a>
+              <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug ? $value->slug : '-')); ?>" title="<?php echo CHtml::encode($value->judul); ?>"><?php echo CHtml::encode($value->judul); ?></a>
             </h4>
             <p class="clearfix">
-              <a class="pull-left listing-category" href="<?php echo Yii::app()->createUrl('post/kategori',array('id'=>$value->kategori->id,'slug'=>$value->kategori->slug)); ?>">
+              <a class="pull-left listing-category" href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->kategori->slug)); ?>">
                 <i class="icon icon-folder"></i>
                 <?php echo CHtml::encode($value->kategori->nama); ?>
               </a>
@@ -92,6 +92,9 @@
               <?php echo CHtml::encode($value->layanan); ?>
             </p>
             <hr>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ips... 
+            </p>
          <!--    <p>
               <span class="listing-rating">
                 <i class="icon icon-star"></i>

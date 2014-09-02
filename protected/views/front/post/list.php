@@ -3,7 +3,7 @@
   <div class="listing-heading-inner">
     <div class="container">
       <h2 class="roboto t_u"><?php echo $kategori->nama; ?></h2>
-      <h4>Temukan kebutuhan untuk mobilmu disini</h4>
+      <h4>Temukan kebutuhan untuk <?php echo $kategori->nama; ?> disini</h4>
       <br>
       <?php if (count($kategori->childs) > 0): ?>
         <ul class="h4 list-inline">
