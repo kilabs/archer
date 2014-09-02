@@ -45,8 +45,8 @@ class PostController extends Controller
 		}
 		
 		if($search->q){
-			$criteria->addCondition('judul = :judul');
-			$criteria->params[':judul'] = $_GET['q'];
+			$criteria->addCondition('judul LIKE :judul');
+			$criteria->params[':judul'] = '%'.$_GET['q'].'%';
 		}
 
 		if($search->sort){
