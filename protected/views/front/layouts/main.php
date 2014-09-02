@@ -55,10 +55,21 @@
 <div class="navbar">
   <div class="container">
     <ul class="nav list-unstyled clearfix">
-      <?php $kategoris = Kategori::model()->findAll('status='.Kategori::STATUS_AKTIF); ?>
-      <?php foreach ($kategoris as $key => $value): ?>
-      <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
-		<?php endforeach ?>
+      <li>
+          <a href="#">
+            More
+            <i></i>
+          </a>
+          <ul class="list-unstyled">
+            <li><a href="#">Kesehatan</a></li>
+            <li><a href="#">Alat musik</a></li>
+            <li><a href="#">Fashion</a></li>
+          </ul>
+        </li>
+<!--       <?php //$kategoris = Kategori::model()->findAll('status='.Kategori::STATUS_AKTIF); ?>
+      <?php //foreach ($kategoris as $key => $value): ?>
+      <li><a href="<?php //echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
+		<?php //endforeach ?> -->
 	  </ul>
 	</div>
 </div>
