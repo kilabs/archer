@@ -17,6 +17,7 @@ return CMap::mergeArray(
 
                     'site/page/<view:.*?>'=>'site/page',
 					'kategori/<kategori:.*?>/'=>'post/list', 
+                    'search'=>'post/list', 
 					'bengkel/<id:.*?>/<slug:.*?>'=>'post/detail', 
 				),
 			),

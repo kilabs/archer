@@ -32,8 +32,8 @@
         <h1 class="site-title clearfix"><a href="/">Bengkelin</a></h1>
       </div>
       <div class="col-md-5">
-        <form class="top-search">
-          <input class="form-control" placeholder="Cari apapun disini..." type="text">
+        <form class="top-search" action="<?php echo Yii::app()->createUrl('post/list'); ?>">
+          <input class="form-control" placeholder="Cari apapun disini..." type="text" name='q'>
           <span></span>
         </form>
       </div>
@@ -57,8 +57,8 @@
       <?php foreach ($kategoris as $key => $value): ?>
         <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
       <?php endforeach ?>
-  </ul>
-</div>
+    </ul>
+  </div>
 </div>
 <!-- .container -->
 

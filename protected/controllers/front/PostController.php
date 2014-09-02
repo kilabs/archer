@@ -28,13 +28,44 @@ class PostController extends Controller
 		));
 	}
 
+
 	public function actionList($kategori=null){
+		$search = new SearchForm();
+		$search->attributes = @$_GET;
+
 		$kategori = Kategori::model()->find('slug = :slug',array(
 			':slug'=>$kategori,
 		));
 
 		$criteria = new CDbCriteria();
 		$criteria->limit = 2;
+
+		if($kategori !== null){
+			$criteria->addInCondition('idKategori',$kategori->getChildIds());
+		}
+		
+		if($search->q){
+			$criteria->addCondition('judul = :judul');
+			$criteria->params[':judul'] = $_GET['q'];
+		}
+
+		if($search->sort){
+			if($search->sort == SearchForm::SORT_TERBARU){
+				$criteria->order  = 'tanggalBuat DESC';
+			}
+			if($search->sort == SearchForm::SORT_TERPOPULER){
+				//$criteria->order  = 'tanggalBuat DESC';
+			}
+			if($search->sort == SearchForm::SORT_TERMURAH){
+				//$criteria->order  = 'tanggalBuat DESC';
+			}
+			if($search->sort == SearchForm::SORT_TERMAHAL){
+				//$criteria->order  = 'tanggalBuat DESC';
+			}
+		}
+
+		$criteria->compare('idLokasi',$search->idLokasi);
+
 		$dataProvider=new CActiveDataProvider('Post',array(
 			'criteria'=>$criteria,
 		));
@@ -42,6 +73,7 @@ class PostController extends Controller
 		$this->render('list',array(
 			'kategori'=>$kategori,
 			'dataProvider'=>$dataProvider,
+			'search'=>$search,
 		));
 	}
 	// Uncomment the following methods and override them if needed

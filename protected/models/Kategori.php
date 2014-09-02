@@ -176,4 +176,33 @@ class Kategori extends CActiveRecord
 			return @$this->parent->nama;
 		}
 	}
+
+
+	public static function fetchModelChilds($id,$sub=0){
+		$data = array();
+		$criteria = new CDbCriteria();
+		$criteria->addCondition('t.idParent = :id');
+		$criteria->params[':id'] = $id;
+		$criteria->order = 't.urut ASC';
+		$criteria->with = array('childs');
+		$kategoris = Kategori::model()->findAll($criteria);
+		foreach ($kategoris as $key => $value) {
+			$data[] = $value;
+			if(count($value->childs) > 0){
+				foreach (self::fetchModelChilds($value->id) as $key2 => $value2) {
+					$data[] = $value2;
+				}
+			}
+		}
+		return $data;
+	}
+
+	public function getChildIds(){
+		$models = self::fetchModelChilds($this->id);
+		$ar = array($this->id);
+		foreach ($models as $key => $value) {
+			$ar[] = $value->id;
+		}
+		return $ar;
+	}
 }

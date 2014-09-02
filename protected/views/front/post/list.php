@@ -20,31 +20,21 @@
 
 <div class="products">
   <div class="container">
-    <form class="products-filter">
+    <form class="products-filter" method='get'>
         <div class="row">
           <div class="col-md-2">
             <h3 class="roboto">Filter Bengkel</h3>
           </div>
           <div class="col-md-4">
-            <input type="text" placeholder="Kata Pencarian..." class="form-control">
+            <?php echo CHtml::activeTextField($search,'q',array('placeholder'=>'Kata Pencarian...','class'=>'form-control','name'=>'q')); ?>
           </div>
           <div class="col-md-3">
-            <select class="form-control">
-              <option>Sumatera Utara</option>
-              <option>DKI Jakarta</option>
-              <option>Jawa Tengah</option>
-              <option>Papua Nugini</option>
-              <option>Maluku Utara</option>
-              <option>Kalimantan Barat</option>
-            </select>
+            <?php echo CHtml::activeDropDownList($search,'idLokasi',
+              CHtml::listData(Lokasi::model()->findAll(),'id','nama'),array('class'=>'form-control','name'=>'idLokasi','empty'=>'all')) ?>
           </div>
           <div class="col-md-3">
-            <select class="form-control">
-              <option>Terbaru</option>
-              <option>Terpopuler</option>
-              <option>Termurah</option>
-              <option>Termahal</option>
-            </select>
+            <?php echo CHtml::activeDropDownList($search,'sort',
+              SearchForm::listSort(),array('class'=>'form-control','name'=>'sort')) ?>
           </div>
         </div>
       </form>
