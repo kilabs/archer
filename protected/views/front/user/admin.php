@@ -15,9 +15,9 @@ $this->menu=array(
 
 <div class="col-md-9 dashboard">
 
-<h3 class="roboto">Daftar Banner</h3>
+<h3 class="roboto">Daftar Layanan Anda</h3>
 
-<a href="<?php echo Yii::app()->createUrl('/user/create'); ?>" class="btn btn-primary">Create Bengkel</a></li>
+<a href="<?php echo Yii::app()->createUrl('/user/create'); ?>" class="btn btn-primary">Buat Layanan baru</a></li>
 
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(

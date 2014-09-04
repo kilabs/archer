@@ -13,7 +13,7 @@ $this->menu=array(
 
 ?>
 <div class="col-md-9 dashboard">
-<h3 class="roboto">Create Banner</h3>
+<h3 class="roboto">Buat Layanan Baru</h3>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
 
