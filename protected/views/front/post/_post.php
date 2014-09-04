@@ -6,6 +6,8 @@
         <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$data->id,'slug'=>$data->slug ? $data->slug : '-')); ?>" class="listing-image block">
           <?php if (isset($data->cover) and $data->cover != null): ?>
             <img src="<?php echo LUpload::thumbs('PostGalery',$data->cover->image,'160x112'); ?>" class="block" alt="<?php echo CHtml::encode($data->judul); ?>">
+          <?php else: ?>
+            <img style="height:111px;width:160px" alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/img/placeholder.png ?>">
           <?php endif ?>
         </a>
       </div>

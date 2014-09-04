@@ -24,7 +24,11 @@
           foreach ($kategoris as $key => $value): ?>
           <div class="col-md-2 category-thumbnail">
             <a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>">
-              <img alt="" class="block" src="<?php echo LUpload::thumbs('Kategori',$value->image,'200x200'); ?>">
+              <?php if ($value->image): ?>
+               <img alt="" class="block" src="<?php echo LUpload::thumbs('Kategori',$value->image,'200x200'); ?>">
+              <?php else: ?>
+                <img style="height:170px;width:170px" alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/img/placeholder.png ?>">
+              <?php endif ?>
               <h5 class="roboto text-center"><?php echo CHtml::encode($value->nama); ?></h5>
             </a>
           </div>
@@ -70,7 +74,7 @@
             <?php if (isset($value->cover) and $value->cover != null): ?>
               <img src="<?php echo LUpload::thumbs('PostGalery',@$value->cover->image,'615x430'); ?>" class="block" alt="<?php echo CHtml::encode($value->judul); ?>">
             <?php else: ?>
-              <img alt="" class="block" src="">
+              <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/img/placeholder.png ?>" style="width: 340px; height: 238px;" class="block">
             <?php endif ?>
           </a>
           <div class="listing-info">
