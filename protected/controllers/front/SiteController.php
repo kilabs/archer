@@ -117,11 +117,27 @@ class SiteController extends Controller
 				$password = $model->password;
 				$model->password = $model->hashPassword($password);
 				if($model->save(false)){
-					$_identity=new FrontUserIdentity($model->username,$password);
-					if($_identity->authenticate()){
-						Yii::app()->user->login($_identity,3600*24);
-						$this->redirect('site/index');
+					$message = Yii::app()->mailgun->newMessage();
+					$message->setFrom('no-reply@bengkelin.com', 'Admin', 'Andrei Baibaratsky');
+					$message->addTo($model->email, 'My dear user');
+					$message->setSubject('Mailgun API library test');
+
+					$email = TemplateEmail::createTemplate(TemplateEmail::PROSES_ACTIVATION_EMAIL, array(
+			            'htmls'=>array(
+			           	    'link_active_email'=>Yii::app()->createAbsoluteUrl('site/activate',array('token'=>$model->generateTokenActive())),
+			            ),
+			        ));
+					// You can use views to build your messages instead of setText() or setHtml():
+					$message->setHtml($email);
+					
+					if($message->send()){
+						Yii::log($email, 'info', 'SendingEmail');
 					}
+					else{
+						Yii::log($email, 'error', 'SendingEmail');
+					}
+
+					$this->redirect(array('site/activeSend'));
 				}
 			}	
 		}
@@ -131,5 +147,72 @@ class SiteController extends Controller
 		));
 	}
 
+	public function  actionTest(){
 
+		
+    }
+
+    public function actionActiveSend(){
+    	$this->render('activeSend');
+    }
+
+    public function actionActivate($token){
+    	$model = Member::model()->find('tokenActiveRegister = :token',array(
+    		':token'=>$token,
+    	));
+
+    	if($model === null){
+    		throw new CHttpException("Page you're looking Not Found");
+    	}
+    	$model->status = Member::STATUS_ACTIVE;
+    	$model->save(false);
+
+    	$_identity=new FrontUserIdentity($model->username,$model->password);
+    	$status = $_identity->authenticateHashed();
+		if($status == FrontUserIdentity::ERROR_NONE){
+			Yii::app()->user->login($_identity,3600*24);
+			$this->redirect(array('site/index'));
+		}
+		else{
+			throw new CHttpException("Page you're looking Not Found");
+		}
+    }
+
+    public function actionSendEmailKonfirmation(){
+    	$error = false;
+    	if (isset($_POST['email'])) {
+    		$model = Member::model()->find('email = :email',array(
+    			':email'=>$_POST['email'],
+    		));
+    		if($model === null){
+    			$error = 'Email Not Found';
+    		}
+    		else{
+    			$message = Yii::app()->mailgun->newMessage();
+				$message->setFrom('no-reply@bengkelin.com', 'Admin');
+				$message->addTo($model->email, 'My dear user');
+				$message->setSubject('Mailgun API library test');
+
+    			$email = TemplateEmail::createTemplate(TemplateEmail::PROSES_ACTIVATION_EMAIL, array(
+		            'htmls'=>array(
+		           	    'link_active_email'=>Yii::app()->createAbsoluteUrl('site/activate',array('token'=>$model->generateTokenActive())),
+		            ),
+		        ));
+				// You can use views to build your messages instead of setText() or setHtml():
+				$message->setHtml($email);
+				
+				if($message->send()){
+					Yii::log($email, 'info', 'SendingEmail');
+					$this->redirect(array('site/ActiveSend'));
+				}
+				else{
+					Yii::log($email, 'error', 'SendingEmail');
+				}
+    		}    		
+    	}
+
+		$this->render('send-email-konfrimation',array(
+			'error'=>$error,
+		));
+    }
 }

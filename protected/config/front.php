@@ -16,6 +16,7 @@ return CMap::mergeArray(
                     'logout'=>'site/logout',
 
                     'site/page/<view:.*?>'=>'site/page',
+                    'activate/<token:.*?>'=>'site/activate',
 					'kategori/<kategori:.*?>/'=>'post/list', 
                     'search'=>'post/list', 
 					'bengkel/<id:.*?>/<slug:.*?>'=>'post/detail', 
