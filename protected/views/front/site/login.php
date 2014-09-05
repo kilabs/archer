@@ -25,12 +25,17 @@ $this->breadcrumbs=array(
           <hr>
           <p>Isikan username dan Password</p>
           <p>
-		<?php echo $form->textField($model,'username',array('class'=>'form-control','placeholder'=>'username')); ?>
-		<?php echo $form->error($model,'username'); ?>
-	 </p>
-          <p>
-		<?php echo $form->passwordField($model,'password',array('class'=>'form-control','placeholder'=>'password')); ?>
-		<?php echo $form->error($model,'password'); ?>
+      		<?php echo $form->textField($model,'username',array('class'=>'form-control','placeholder'=>'username')); ?>
+      		<?php echo $form->error($model,'username'); ?>
+      	 </p>
+                <p>
+      		<?php echo $form->passwordField($model,'password',array('class'=>'form-control','placeholder'=>'password')); ?>
+      		<?php echo $form->error($model,'password'); ?>
+          <?php if ($model->getError('statusKonfirm')): ?>
+            <div class="alert alert-warning" role="alert">
+              Your Email has not been konfirmed klik <?php echo CHtml::link('here',array('/site/sendEmailKonfirmation')) ?> to send email konfirmation
+            </div>
+          <?php endif ?>
 		   </p>
           <p class="clearfix">
             <span class="checkbox pull-left">

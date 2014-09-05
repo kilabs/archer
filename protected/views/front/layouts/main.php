@@ -31,7 +31,7 @@
   <header class="top" id="top">
     <div class="container">
       <div class="col-md-3">
-        <h1 class="site-title clearfix"><a href="/">Bengkelin</a></h1>
+        <h1 class="site-title clearfix"><a href="<?php echo Yii::app()->createurl('site/index') ?>">Bengkelin</a></h1>
       </div>
       <div class="col-md-5">
         <form class="top-search" action="<?php echo Yii::app()->createUrl('post/list'); ?>">
@@ -55,23 +55,29 @@
 <div class="navbar">
   <div class="container">
     <ul class="nav list-unstyled clearfix">
-      <?php $kategoris = Kategori::model()->findAll('status='.Kategori::STATUS_AKTIF); ?>
+      <?php 
+      $criteria = new CDbCriteria();
+      $criteria->with = array('childs'=>array(
+        'on'=>'childs.status = '.Kategori::STATUS_AKTIF
+      ));
+      $criteria->addCondition('t.status='.Kategori::STATUS_AKTIF.' and t.idParent=0');
+      $criteria->limit = 8;
+      $kategoris = Kategori::model()->findAll($criteria); ?>
       <?php foreach ($kategoris as $key => $value): ?>
-      <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
-    <?php endforeach ?>
-
-    <li>
-      <a href="#">
-        More
-        <i></i>
-      </a>
-      <ul class="list-unstyled">
-        <li><a href="#">Kesehatan</a></li>
-        <li><a href="#">Alat musik</a></li>
-        <li><a href="#">Fashion</a></li>
-      </ul>
-    </li>
-    
+        <?php if (count($value->childs) == 0): ?>
+          <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
+        <?php else: ?>
+           <li>
+                <a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></i>
+                </a>
+                <ul class="list-unstyled">
+                <?php foreach ($value->childs as $key2 => $value2): ?>
+                  <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value2->slug)); ?>"><?php echo CHtml::encode($value2->nama); ?></a></li>
+                <?php endforeach ?>
+                </ul>
+          </li>
+        <?php endif ?>
+      <?php endforeach ?>    
   </ul>
 </div>
 </div>

@@ -10,6 +10,7 @@ class FrontLoginForm extends CFormModel
 	public $username;
 	public $password;
 	public $rememberMe;
+	public $statusKonfirm;
 
 	private $_identity;
 
@@ -49,6 +50,11 @@ class FrontLoginForm extends CFormModel
 		if(!$this->hasErrors())
 		{
 			$this->_identity=new FrontUserIdentity($this->username,$this->password);
+			$status = $this->_identity->authenticate();
+			if($status == FrontUserIdentity::ERROR_USER_NOT_CONFIRM){
+				$this->addError('statusKonfirm','User Not konfirmed.');
+				return;
+			}
 			if(!$this->_identity->authenticate())
 				$this->addError('password','Incorrect username or password.');
 		}

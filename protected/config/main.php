@@ -16,6 +16,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'ext.php-mailgun.*',
 	),
 
 	'modules'=>array(
@@ -32,6 +33,9 @@ return array(
 
 	// application components
 	'components'=>array(
+		'formatter'=>array(
+			'class'=>'CFormatter',
+		),
 		'image'=>array(
 			'class'=>'application.extensions.image.CImageComponent',
 			// GD or ImageMagick
@@ -60,6 +64,14 @@ return array(
 		'cache'=>array(
 		    'class' => 'CFileCache',
 		),
+
+		'mailgun' => array(
+            'class' => 'ext.php-mailgun.MailgunYii',
+            'domain' => 'sandbox7240182016c14f3ea5303842674ec176.mailgun.org',
+            'key' => 'key-2a4af88897911ab2110b4200ec6420b8',
+       //     'tags' => array('yii'), // You may also specify some Mailgun parameters
+            'enableTracking' => false,
+        ),
 		// uncomment the following to use a MySQL database
 		/*
 		'db'=>array(
@@ -81,6 +93,12 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
+				array(
+                    'class'=>'CFileLogRoute',
+                    'levels'=>'info',
+                    'categories'=>'SendingEmail',
+                    'logFile'=>'EmailLog.log'
+                ),
 				// uncomment the following to show log messages on web pages
 				/*
 				array(

@@ -16,6 +16,9 @@
  */
 class Member extends CActiveRecord
 {
+	const STATUS_PENDING = 0;
+	const STATUS_ACTIVE = 1;
+	const STATUS_BLOCKED = 2;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -38,7 +41,7 @@ class Member extends CActiveRecord
 			array('token', 'length', 'max'=>32),
 			array('namaLengkap', 'length', 'max'=>255),
 			array('nomorTelepon', 'length', 'max'=>64),
-			array('bio','safe'),
+			array('bio, status','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, username, email, password, facebook, twitter, website, bio, namaLengkap, nomorTelepon, foto', 'safe', 'on'=>'search'),
@@ -130,7 +133,7 @@ class Member extends CActiveRecord
     		$member = Member::model()->findByToken($token);
     	}while($member !== null);
     	$this->token = $token;
-    	$this->save();
+    	$this->save(false);
     	return $this->token;
     }
 
@@ -142,4 +145,21 @@ class Member extends CActiveRecord
 	    ));
 	    return $this->query($criteria);
 	}
+
+	public function generateTokenActive(){
+    	do{
+    		$token = md5($this->tokenActiveRegister.rand(0,1000));
+    		$member = Member::model()->find('tokenActiveRegister = :token',array(
+    			':token'=>$token,
+    		));
+    	}while($member !== null);
+    	$this->tokenActiveRegister = $token;
+    	if($this->save(false)){
+
+    	}
+    	else{
+    		
+    	}
+    	return $this->tokenActiveRegister;
+    }
 }
