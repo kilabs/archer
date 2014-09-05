@@ -36,7 +36,7 @@ $this->breadcrumbs=array(
 				<?php endif ?>
 	 </p>
   <p>
-    <input class="block" type="submit" value="Send Email Konfirmation">
+    <input class="block" type="submit" value="Send Confirmation Email">
   </p>
 
 <?php $this->endWidget(); ?>
