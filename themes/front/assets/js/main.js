@@ -58,11 +58,6 @@ $.fn.accordion = function() {
 $(document).ready(function() {
   
   $('.accordion').accordion();
-
-  Dropzone.autoDiscover = false;
-  
-  $('#photosUpload').dropzone({ url: '/' });
-
 });
 
 // window load

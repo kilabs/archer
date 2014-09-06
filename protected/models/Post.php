@@ -87,6 +87,7 @@ class Post extends CActiveRecord
 			'fotoFile'=>'Foto',
 			'kategori.nama'=>'Kategori',
 			'kontent'=>'Profile',
+			'idLokasi'=>'Lokasi',
 		);
 	}
 

@@ -146,6 +146,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript"></script>
 <script src="http://maps.google.com/maps/api/js" type="text/javascript"></script>
 <?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
-
+<script src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/main.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/dropzone.min.js" type="text/javascript"></script>
 </body>
 </html>

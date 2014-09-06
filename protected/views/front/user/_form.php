@@ -40,7 +40,7 @@
     </p>          
 		 </div>
     <div class="col-sm-6 col-xs-7">
-			<?php echo $form->dropDownList($model,'idKategori',CHtml::listData(Kategori::model()->findAll(),'id','nama')
+			<?php echo $form->dropDownList($model,'idKategori',Kategori::listParent($model->id)
       ,array('maxlength'=>200,'class'=>'form-control  form-dashboard-input')); ?>
 			<?php echo $form->error($model,'idKategori'); ?>
 		</div>                            
@@ -57,20 +57,6 @@
 		<?php echo $form->error($model,'kontent'); ?>
 		</div>
 	</div>
-
-	 <div class="row form-dashboard-row">            
-    <div class="col-sm-3 col-xs-5">
-      <p class="form-dashboard-label"> 
-        <?php echo $form->labelEx($model,'foto',array('class'=>'col-sm-2 control-label')); ?> 
-        </p> 
-        </div>
-    <div class="col-sm-6 col-xs-7">
-          <?php echo $form->fileField($model,'fotoFile'); ?>
-            
-        </div>
-    </div>
-
-	
 
 	<div class="row form-dashboard-row">            
     <div class="col-sm-3 col-xs-5">
@@ -91,7 +77,7 @@
     </p>    
 		</div>
     <div class="col-sm-6 col-xs-7">
-		<?php echo $form->dropDownList($model,'idLokasi',CHtml::listData(Lokasi::model()->findAll(),'id','nama'),array('class'=>'form-control  form-dashboard-input','id'=>'cleditor')); ?>
+		<?php echo $form->dropDownList($model,'idLokasi',CHtml::listData(Lokasi::model()->findAll(),'id','nama'),array('class'=>'form-control  form-dashboard-input')); ?>
 		<?php echo $form->error($model,'idLokasi'); ?>
 		</div>
   </div>
@@ -114,6 +100,20 @@
 
 		</div>
   </div>
+
+  <?php if ($model->isNewRecord): ?>
+    <div class="row form-dashboard-row">
+      <div class="col-sm-3 col-xs-5">
+        <p class="form-dashboard-label">
+          Upload Foto
+        </p>
+      </div>
+      <div class="col-sm-9 col-xs-7">
+        <div id="photosUpload" class="dropzone dz-clickable"><div class="dz-default dz-message"><span>Drop files here to upload</span></div></div>
+      </div>
+    </div>
+  <?php endif ?>
+  
 
 	<div class="row form-dashboard-row">           
     <div class="col-sm-6 col-xs-7 col-sm-offset-3 col-xs-offset-5"> 
@@ -192,12 +192,31 @@ Yii::app()->clientScript->registerScript('slug',
 
 //google maps render
 $js =    '
+  var map;
+  var marker;
+  $("#Post_idLokasi").change(function(){
+    var url = "'.Yii::app()->createUrl('/user/latlongLokasi').'";
+    $.post(url,{ id : $(this).val() }, function(ret){
+      if(ret){
+        var myLatlng = new google.maps.LatLng(ret.lat,ret.lng);
+        map.setCenter(myLatlng);
+        marker.setPosition(myLatlng);
+      }
+    },"json");
+  });
+  Dropzone.autoDiscover = false;
+  
+  $("#photosUpload").dropzone({
+    paramName : "file",
+    url : "'.Yii::app()->createUrl('/user/uploadGalery').'",
+  });
+
 var geocoder;
 function initialize() {
   var defLat = '.(double)$model->lat.';
   var defLng = '.(double)$model->lng.';
   var myLatlng = new google.maps.LatLng(defLat,defLng);
-  var map = new google.maps.Map(document.getElementById("map-canvas"), {
+  map = new google.maps.Map(document.getElementById("map-canvas"), {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     zoom: '.(int)$model->zoom.',
     center: myLatlng
@@ -205,7 +224,7 @@ function initialize() {
   geocoder = new google.maps.Geocoder();
 
 
-var marker = new google.maps.Marker({
+marker = new google.maps.Marker({
   position: myLatlng, 
   map: map, // handle of the map 
   draggable:true

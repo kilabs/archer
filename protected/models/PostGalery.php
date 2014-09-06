@@ -100,11 +100,13 @@ class PostGalery extends CActiveRecord
 	}
 
 	protected function afterSave(){
-		if($this->post->galeryId == null){
-			$this->post->galeryId = $this->id;
-			if(!$this->post->save()){
-				print_r($this->post->getErrors());
-				exit;	
+		if($this->post){
+			if($this->post->galeryId == null){
+				$this->post->galeryId = $this->id;
+				if(!$this->post->save()){
+					print_r($this->post->getErrors());
+					exit;	
+				}
 			}
 		}
 		return parent::afterSave();

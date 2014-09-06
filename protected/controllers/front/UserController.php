@@ -61,7 +61,7 @@ class UserController extends Controller
 		$model->lat = -6.2087634;
 		$model->lng = 106.8455989;
 		$model->zoom = 10;
-
+		$model->idLokasi = 83;
 		if(isset($_POST['Post']))
 		{
 			$model->attributes=$_POST['Post'];
@@ -71,6 +71,19 @@ class UserController extends Controller
 					$model->foto = LUpload::upload($model->fotoFile,'Post');
 				}
 				$model->save();
+				PostGalery::model()->updateAll(array(
+					'idPost'=>$model->id,
+					'sessionID'=>null,
+				),'sessionID=:sessionID',array(
+					':sessionID'=>Yii::app()->session->getSessionID()
+				));
+				$_cover = PostGalery::model()->find('idPost = :id',array(
+					':id'=>$model->id,
+				));
+				if($_cover){
+					$model->galeryId = $_cover->id;
+					$model->save();
+				}
 				$this->redirect(array('view','id'=>$model->id));
 			}	
 		}
@@ -121,6 +134,7 @@ class UserController extends Controller
 					$model->foto = LUpload::upload($model->fotoFile,'Post');
 				}
 				$model->save();
+
 				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
@@ -154,6 +168,26 @@ class UserController extends Controller
 			'model'=>$model,
 			'newGalery'=>$galery,
 		));
+	}
+
+	public function actionUploadGalery(){
+		$galery = new PostGalery('create');  
+		$galery->imageFile=CUploadedFile::getInstanceByName('file');
+		$galery->sessionID = Yii::app()->session->getSessionID();
+		if($galery->validate()){
+			if($galery->imageFile){
+				$galery->image = LUpload::upload($galery->imageFile,'PostGalery');
+				$galery->save();
+			}
+		}
+	}
+
+	public function actionLatlongLokasi(){
+		$lokasi = Lokasi::model()->findByPk(@$_POST['id']);
+		if($lokasi)
+			echo CJSON::encode($lokasi);
+		else
+			echo CJSON::encode(false); 
 	}
 }
 	
