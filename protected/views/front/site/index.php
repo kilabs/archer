@@ -1,5 +1,5 @@
 <?php 
-  Yii::app()->clientScript->registerMetaTag(Yii::app()->getBaseUrl(true).'/themes/'.Yii::app()->theme->name.'/assets/img/logo.png',null,null,array('property'=>'og:title'));
+  Yii::app()->clientScript->registerMetaTag(Yii::app()->getBaseUrl(true).'/themes/'.Yii::app()->theme->name.'/assets/img/logo.png',null,null,array('property'=>'og:image'));
  ?>
   <div class="jumbotron" style="background-image:url(<?php echo Yii::app()->theme->baseUrl; ?>/uploads/46.jpg)">
     <div class="container">
