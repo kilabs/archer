@@ -31,7 +31,7 @@
   <header class="top" id="top">
     <div class="container">
       <div class="col-md-3">
-        <h1 class="site-title clearfix"><a href="<?php echo Yii::app()->createurl('site/index') ?>">Bengkelin</a></h1>
+        <h1 class="site-title clearfix"><a href="<?php echo Yii::app()->baseUrl; ?>">Bengkelin</a></h1>
       </div>
       <div class="col-md-5">
         <form class="top-search" action="<?php echo Yii::app()->createUrl('post/list'); ?>">
