@@ -3,7 +3,7 @@
  ?>
 <?php 
   if (isset($post->cover) and $post->cover != null): 
-  Yii::app()->clientScript->registerMetaTag(LUpload::thumbs('PostGalery',$post->cover->image,'160x160'),null,null,array('property'=>'og:image'));
+  Yii::app()->clientScript->registerMetaTag(LUpload::thumbs('PostGalery',$post->cover->image,'160x160',true),null,null,array('property'=>'og:image'));
   else:
   Yii::app()->clientScript->registerMetaTag(Yii::app()->getBaseUrl(true).'/themes/'.Yii::app()->theme->name.'/assets/img/placeholder.png',null,null,array('property'=>'og:image'));
   endif ?>
