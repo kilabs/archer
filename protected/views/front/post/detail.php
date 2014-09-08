@@ -2,8 +2,8 @@
   Yii::app()->clientScript->registerMetaTag('Bengkelin - '.$post->judul,null,null,array('property'=>'og:title'));
  ?>
 <?php 
-  if (isset($data->cover) and $data->cover != null): 
-  Yii::app()->clientScript->registerMetaTag(LUpload::thumbs('PostGalery',$data->cover->image,'160x160'),null,null,array('property'=>'og:image'));
+  if (isset($post->cover) and $post->cover != null): 
+  Yii::app()->clientScript->registerMetaTag(LUpload::thumbs('PostGalery',$post->cover->image,'160x160'),null,null,array('property'=>'og:image'));
   else:
   Yii::app()->clientScript->registerMetaTag(Yii::app()->getBaseUrl(true).'/themes/'.Yii::app()->theme->name.'/assets/img/placeholder.png',null,null,array('property'=>'og:image'));
   endif ?>
