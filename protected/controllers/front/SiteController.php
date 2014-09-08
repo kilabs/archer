@@ -215,4 +215,84 @@ class SiteController extends Controller
 			'error'=>$error,
 		));
     }
+
+    public function actionForgetPassword(){
+        $model = new ResetPassword('create');
+        if(isset($_POST['ResetPassword'])){
+            $model->attributes = $_POST['ResetPassword'];
+            if($model->save()){
+                Yii::app()->user->setFlash('ResetPassword','Password request hes been send. please check your email for reset password.');
+               	
+
+               	$message = Yii::app()->mailgun->newMessage();
+				$message->setFrom('no-reply@bengkelin.com', 'Admin');
+				$message->addTo($model->email, 'My dear user');
+				$message->setSubject('Mailgun API library test');
+
+    			$email = TemplateEmail::createTemplate(TemplateEmail::RESET_PASSWORD, array(
+                    'htmls'=>array(
+                        'link_reset'=>Yii::app()->createAbsoluteUrl('/site/resetPassword',array('token'=>$model->token)),
+                    ),
+                ));
+				// You can use views to build your messages instead of setText() or setHtml():
+				$message->setHtml($email);
+				
+				if($message->send()){
+					Yii::log($email, 'info', 'SendingEmail');
+					$this->refresh();
+					Yii::app()->end();
+				}
+				else{
+					Yii::log($email, 'error', 'SendingEmail');
+				}
+
+                $this->refresh();
+                Yii::app()->end();
+            }
+        }
+        
+        $this->render('forgetPassword',array(
+            'model'=>$model,
+        ));
+    }
+    public function actionResetPassword($token){
+            $reset = ResetPassword::model()->find('token=:token',array(
+                ':token'=>$token,
+            ));
+            if($reset==null)
+                throw new CHttpException('Link Tidak Valid');
+
+            if(strtotime($reset->tgl_expired) < time() or $reset->tgl_reset != null or $reset->status == 1){
+                throw new CHttpException('Link Sudah Kadarluarsa');
+            }
+
+            $model = ResetPasswordForm::model()->find('email = :email',array(
+                ':email'=>$reset->email,
+            ));
+
+            if(isset($_POST['ResetPasswordForm'])){
+                $model->attributes = $_POST['ResetPasswordForm'];
+                if($model->validate()){
+                	$model->password  = $model->hashPassword($model->password);
+                	$model->save(false);
+                    Yii::app()->user->setFlash('ResetPasswordForm','Password request hes been send. please check your email for reset password.');
+                    $reset->tgl_reset = date('Y-m-d H:i:s');
+                    $reset->status = 1;
+                    if($reset->save()){
+
+                    }
+                    else{
+
+                    }
+
+                    $this->redirect(array('/site/login'));
+                    Yii::app()->end();
+                }
+            }
+            $model->password = '';
+            $model->repassword = '';
+            $this->render('resetpasswordform',array(
+                'model'=>$model,
+            ));
+        }
 }

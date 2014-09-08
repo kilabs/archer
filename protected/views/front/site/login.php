@@ -47,7 +47,7 @@ $this->breadcrumbs=array(
           <hr>
           <p class="clearfix">
             <span class="pull-left">
-              <a href="#">Forgot Password</a>
+              <a href="<?php echo Yii::app()->createUrl('/site/forgetPassword'); ?>">Forgot Password</a>
             </span>
             <span class="pull-right">
               Don't have an account yet?

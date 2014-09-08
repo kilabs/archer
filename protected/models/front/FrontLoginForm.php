@@ -56,6 +56,7 @@ class FrontLoginForm extends CFormModel
 				return;
 			}
 			if($this->_identity->authenticate() != FrontUserIdentity::ERROR_NONE)
+
 				$this->addError('password','Incorrect username or password.');
 		}
 	}

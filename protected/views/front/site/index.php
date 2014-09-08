@@ -1,4 +1,6 @@
-
+<?php 
+  Yii::app()->clientScript->registerMetaTag(Yii::app()->getBaseUrl(true).'/themes/'.Yii::app()->theme->name.'/assets/img/logo.png',null,null,array('property'=>'og:title'));
+ ?>
   <div class="jumbotron" style="background-image:url(<?php echo Yii::app()->theme->baseUrl; ?>/uploads/46.jpg)">
     <div class="container">
       <h1 class="jumbotron-hero white t_u roboto">Temukan Jasa Apapun Disini</h1>

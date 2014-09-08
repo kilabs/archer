@@ -65,6 +65,7 @@ class UserController extends Controller
 		if(isset($_POST['Post']))
 		{
 			$model->attributes=$_POST['Post'];
+			$model->idMember = Yii::app()->user->id;
 			$model->fotoFile=CUploadedFile::getInstance($model,'fotoFile');
 			if($model->validate()){
 				if($model->fotoFile){
@@ -188,6 +189,28 @@ class UserController extends Controller
 			echo CJSON::encode($lokasi);
 		else
 			echo CJSON::encode(false); 
+	}
+
+	public function actionGantiPassword()
+	{
+		$model= ChangePasswordForm::model('ChangePasswordForm')->findByPk(Yii::app()->user->id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+
+		if(isset($_POST['ChangePasswordForm']))
+		{
+			$model->attributes=$_POST['ChangePasswordForm'];
+			if($model->validate()){
+				$this->setFlash('changePassword','Password Telah Berhasil Dirubah');
+				$model->password = $model->hashPassword($model->newPassword);
+				$model->save(false);
+				$this->refresh();
+			}
+		}
+
+		$this->render('changePassword',array(
+			'model'=>$model,
+		));
 	}
 }
 	
