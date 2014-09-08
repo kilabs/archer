@@ -1,6 +1,6 @@
 <?php 
   Yii::app()->clientScript->registerMetaTag('Bengkelin - '.$post->judul,null,null,array('property'=>'og:title'));
-  Yii::app()->clientScript->registerMetaTag('website',null,null,array('property'=>'og:type'));
+  Yii::app()->clientScript->registerMetaTag('article',null,null,array('property'=>'og:type'));
   Yii::app()->clientScript->registerMetaTag(Yii::app()->createAbsoluteUrl('post/detail',array('id'=>$post->id,'slug'=>$post->slug ? $post->slug : '-')),null,null,array('property'=>'og:url'));
  ?>
 <?php 
