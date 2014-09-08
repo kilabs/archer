@@ -11,7 +11,7 @@
     <div class="container page-details">
       <div class="row shop-header">
         <div class="col-md-9">
-          <?php if ($post->member->foto): ?>
+          <?php if (isset($post->member->foto) and $post->member->foto): ?>
           <img alt="" class="shop-logo pull-left" src="<?php echo LUpload::thumbs('Profil',$post->member->foto,'200x200'); ?>">
           <?php else: ?>
           <img alt="" class="shop-logo pull-left" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/ava.jpg">
