@@ -55,7 +55,7 @@ class FrontLoginForm extends CFormModel
 				$this->addError('statusKonfirm','User Not konfirmed.');
 				return;
 			}
-			if(!$this->_identity->authenticate())
+			if($this->_identity->authenticate() !== FrontUserIdentity::ERROR_NONE)
 				$this->addError('password','Incorrect username or password.');
 		}
 	}
