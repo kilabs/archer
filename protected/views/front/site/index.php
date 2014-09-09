@@ -76,7 +76,7 @@
             <?php if (isset($value->cover) and $value->cover != null): ?>
               <img src="<?php echo LUpload::thumbs('PostGalery',@$value->cover->image,'615x430'); ?>" class="block" alt="<?php echo CHtml::encode($value->judul); ?>">
             <?php else: ?>
-              <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/img/placeholder.png ?>" style="width: 340px; height: 238px;" class="block">
+              <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/img/placeholder.png" style="width: 340px; height: 238px;" class="block">
             <?php endif ?>
           </a>
           <div class="listing-info">
