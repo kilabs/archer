@@ -65,14 +65,14 @@
       $kategoris = Kategori::model()->findAll($criteria); ?>
       <?php foreach ($kategoris as $key => $value): ?>
         <?php if (count($value->childs) == 0): ?>
-          <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
+          <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug ? $value->slug : '-')); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
         <?php else: ?>
            <li>
-                <a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug)); ?>"><?php echo CHtml::encode($value->nama); ?></a></i>
+                <a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug  ? $value->slug : '-')); ?>"><?php echo CHtml::encode($value->nama); ?></a></i>
                 </a>
                 <ul class="list-unstyled">
                 <?php foreach ($value->childs as $key2 => $value2): ?>
-                  <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value2->slug)); ?>"><?php echo CHtml::encode($value2->nama); ?></a></li>
+                  <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value2->slug  ? $value2->slug : '-')); ?>"><?php echo CHtml::encode($value2->nama); ?></a></li>
                 <?php endforeach ?>
                 </ul>
           </li>

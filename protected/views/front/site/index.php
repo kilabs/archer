@@ -29,7 +29,7 @@
               <?php if ($value->image): ?>
                <img alt="" class="block" src="<?php echo LUpload::thumbs('Kategori',$value->image,'200x200'); ?>">
               <?php else: ?>
-                <img style="height:170px;width:170px" alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/img/placeholder.png ?>">
+                <img style="height:170px;width:170px" alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/img/placeholder.png">
               <?php endif ?>
               <h5 class="roboto text-center"><?php echo CHtml::encode($value->nama); ?></h5>
             </a>
