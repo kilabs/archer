@@ -9,9 +9,10 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 //	array('label'=>'List Member', 'url'=>array('index')),
-//	array('label'=>'Create Member', 'url'=>array('create')),
+	array('label'=>'Create Member', 'url'=>array('create')),
 );
 
+$this->adminTitle = 'List Member';
 ?>
 
  <?php $this->widget('zii.widgets.grid.CGridView', array(

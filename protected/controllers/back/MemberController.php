@@ -45,16 +45,23 @@ class MemberController extends BackendController
 	 */
 	public function actionCreate()
 	{
-		$model=new Member;
+		$model=new MemberForm('create');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Member']))
+		if(isset($_POST['MemberForm']))
 		{
-			$model->attributes=$_POST['Member'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model->attributes=$_POST['MemberForm'];
+			$model->fotoFile=CUploadedFile::getInstance($model,'fotoFile');
+			if($model->validate()){
+				if($model->fotoFile){
+					$model->foto = LUpload::upload($model->fotoFile,'Profil');
+				}
+				$model->password = $model->hashPassword($model->password1);
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
@@ -69,16 +76,25 @@ class MemberController extends BackendController
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel($id,'MemberForm');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Member']))
+		if(isset($_POST['MemberForm']))
 		{
-			$model->attributes=$_POST['Member'];
-			if($model->save())
+			$model->attributes=$_POST['MemberForm'];
+			$model->fotoFile=CUploadedFile::getInstance($model,'fotoFile');
+			if($model->save()){
+				if($model->password1){
+					$model->password = $model->hashPassword($model->password1);
+				}
+				if($model->fotoFile){
+					$model->foto = LUpload::upload($model->fotoFile,'Profil');
+				}
 				$this->redirect(array('view','id'=>$model->id));
+			}
+				
 		}
 
 		$this->render('update',array(
@@ -130,9 +146,9 @@ class MemberController extends BackendController
 	 * @return Member the loaded model
 	 * @throws CHttpException
 	 */
-	public function loadModel($id)
+	public function loadModel($id,$class="Member")
 	{
-		$model=Member::model()->findByPk($id);
+		$model=Member::model($class)->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

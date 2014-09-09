@@ -8,7 +8,6 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Member', 'url'=>array('index')),
 	array('label'=>'Create Member', 'url'=>array('create')),
 	array('label'=>'Update Member', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Delete Member', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
@@ -24,14 +23,19 @@ $this->menu=array(
 		'id',
 		'username',
 		'email',
-		'password',
-		'token',
-		'facebook',
-		'twitter',
-		'website',
-		'foto',
 		'namaLengkap',
 		'nomorTelepon',
 		'bio',
+		'facebook',
+		'twitter',
+		'website',
+		array(
+			'name'=>'image',
+			'value'=>'<img src="'.LUpload::raw('Profil',$model->foto).'" />',
+			'type'=>'raw',
+		),
+		
+
 	),
+	  'htmlOptions' => array('class' => 'table table-hover'), 
 )); ?>

@@ -10,6 +10,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Member', 'url'=>array('index')),
+	array('label'=>'View Member', 'url'=>array('view', 'id'=>$model->id)),
 );
 
 $this->adminTitle = 'Detail Member';
