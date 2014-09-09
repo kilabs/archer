@@ -47,7 +47,7 @@ $this->adminTitle = 'List Member';
 		*/
 		array(
 			'class'=>'CButtonColumn',
-			 'template'=>'{update}{delete}',
+			 'template'=>'{update}{delete}{view}',
 	         'buttons'=>array (
 	            'update'=> array(
 	                'label' => '<i class="icon-edit"></i>',
