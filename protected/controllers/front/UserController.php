@@ -42,7 +42,7 @@ class UserController extends Controller
 
 		$model=new Post('search');
 		$model->unsetAttributes();  // clear any default values
-		
+
 		if(isset($_GET['Post'])){
 			$model->attributes=$_GET['Post'];
 		}
@@ -106,7 +106,7 @@ class UserController extends Controller
 	public function loadModel($id)
 	{
 		$model=Post::model()->findByPk($id);
-		if($model===null)
+		if($model===null or $model->idMember != Yii::app()->user->id)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}

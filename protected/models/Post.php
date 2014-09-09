@@ -110,6 +110,7 @@ class Post extends CActiveRecord
 		$criteria=new CDbCriteria;
 		$criteria->with = array('kategori');
 		$criteria->compare('id',$this->id);
+		$criteria->compare('idMember',$this->idMember);
 		$criteria->compare('judul',$this->judul,true);
 		$criteria->compare('slug',$this->slug,true);
 		$criteria->compare('idKategori',$this->idKategori);
