@@ -158,6 +158,22 @@ class Kategori extends CActiveRecord
 		}
 		return $ret;
 	}
+	public static function listParent2($except=null){
+		$arrs = self::fetchChild(0,0,$except);
+		foreach ($arrs as $key => $value) {
+			$id = $value['id'];
+			$text = '';
+			for ($i = 0 ; $i < $value['sub'];$i++) {
+				if($i==0){
+					$text.= '|';
+				}
+				$text.='---';
+			}
+			$text.=$value['nama'];
+			$ret[$id] = $text;
+		}
+		return $ret;
+	}
 
 	protected function beforeSave(){
 		if($this->isNewRecord){

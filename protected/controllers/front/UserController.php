@@ -68,10 +68,19 @@ class UserController extends Controller
 			$model->idMember = Yii::app()->user->id;
 			$model->fotoFile=CUploadedFile::getInstance($model,'fotoFile');
 			if($model->validate()){
-				if($model->fotoFile){
-					$model->foto = LUpload::upload($model->fotoFile,'Post');
-				}
 				$model->save();
+				if($model->fotoFile){
+					$galery = new PostGalery('create');
+					$galery->imageFile=$model->fotoFile;
+					$galery->idPost = $model->id;
+					if($galery->validate()){
+						if($galery->imageFile){
+							$galery->image = LUpload::upload($galery->imageFile,'PostGalery');
+							$galery->save();
+							$this->redirect(array('galery','id'=>$model->id));
+						}
+					}
+				}
 				PostGalery::model()->updateAll(array(
 					'idPost'=>$model->id,
 					'sessionID'=>null,
@@ -85,7 +94,7 @@ class UserController extends Controller
 					$model->galeryId = $_cover->id;
 					$model->save();
 				}
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('daftarBengkel'));
 			}	
 		}
 
