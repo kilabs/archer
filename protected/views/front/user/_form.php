@@ -40,7 +40,7 @@
     </p>          
 		 </div>
     <div class="col-sm-6 col-xs-7">
-			<?php echo $form->dropDownList($model,'idKategori',Kategori::listParent($model->id)
+			<?php echo $form->dropDownList($model,'idKategori',Kategori::listParent2($model->id)
       ,array('maxlength'=>200,'class'=>'form-control  form-dashboard-input')); ?>
 			<?php echo $form->error($model,'idKategori'); ?>
 		</div>                            
