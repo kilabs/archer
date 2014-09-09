@@ -102,14 +102,15 @@
   </div>
 
   <?php if ($model->isNewRecord): ?>
-    <div class="row form-dashboard-row">
+    <div class="row form-dashboard-row">            
       <div class="col-sm-3 col-xs-5">
-        <p class="form-dashboard-label">
-          Upload Foto
-        </p>
+        <p class="form-dashboard-label">          
+      <?php echo $form->labelEx($model,'fotoFile',array('class'=>'col-sm-2 control-label')); ?>         
+      </p>    
       </div>
-      <div class="col-sm-9 col-xs-7">
-        <div id="photosUpload" class="dropzone dz-clickable"><div class="dz-default dz-message"><span>Drop files here to upload</span></div></div>
+      <div class="col-sm-6 col-xs-7">
+      <?php echo $form->fileField($model,'fotoFile',array('class'=>'form-control  form-dashboard-input')); ?>
+      <?php echo $form->error($model,'fotoFile'); ?>
       </div>
     </div>
   <?php endif ?>
