@@ -33,8 +33,9 @@ $this->menu=array(
 		),
 		array(
 			'name'=>'foto',
-			'value'=>'<img src="'.LUpload::raw('Post',$model->foto).'" />',
+			'value'=>'<img src="'.LUpload::thumbs("PostGalery",@$model->cover->image,"100x100").'" />',
 			'type'=>'raw',
+			'visible'=>((isset($model->cover) and $model->cover!=null))
 		),
 		array(
 			'name'=>'status',

@@ -14,7 +14,7 @@ class UserController extends Controller
 		
 		$model = Member::model('ProfilForm')->findByPk(Yii::app()->user->id);
 		if($model === null){
-			$this->redirect('login');
+			$this->redirect(array('site/login'));
 		}
 
 		if(isset($_POST['ProfilForm'])){
@@ -37,7 +37,7 @@ class UserController extends Controller
 	{
 		$member = Member::model('ProfilForm')->findByPk(Yii::app()->user->id);
 		if($member === null){
-			$this->redirect('login');
+			$this->redirect(array('site/login'));
 		}
 
 		$model=new Post('search');
@@ -54,6 +54,11 @@ class UserController extends Controller
 
 	public function actionCreate()
 	{
+		$member = Member::model('ProfilForm')->findByPk(Yii::app()->user->id);
+		if($member === null){
+			$this->redirect(array('site/login'));
+		}
+
 		$model=new Post('create');
 
 		// Uncomment the following line if AJAX validation is needed
