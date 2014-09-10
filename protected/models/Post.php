@@ -39,7 +39,7 @@ class Post extends CActiveRecord
 			array('judul, slug', 'length', 'max'=>150),
 			array('alamat, kota, noTelp, fbText, fbLink, twitterText, twitterLink', 'length', 'max'=>150),
 			array('foto', 'length', 'max'=>64),
-			array('tanggalBuat, tanggalModif, lat, lng, layanan', 'safe'),
+			array('tanggalBuat, tanggalModif, lat, lng, layanan, facebook, twitter, website', 'safe'),
 			array('judul, kontent, idKategori', 'required','on'=>'create'),
 			array('judul, idKategori', 'required','on'=>'update'),
 			array('fotoFile', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true,'on'=>'create'),

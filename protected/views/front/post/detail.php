@@ -31,29 +31,30 @@
                 <?php echo $post->noTelp; ?> 
               </li>
             <?php endif ?>
-            <?php if ($post->fbText and $post->fbLink): ?>
+            <?php if ($post->facebook): ?>
               <li>
                 <span>
                   <i class="icon icon-facebook"></i>
                 </span>
-                <a href="<?php echo $post->fbLink; ?>"><?php echo $post->fbText; ?></a>
+                <a href="http://www.facebook.com/<?php echo $post->facebook; ?>"><?php echo $post->facebook; ?></a>
               </li>
             <?php endif; ?>
-            <?php if ($post->twitterText and $post->twitterLink): ?>
+            <?php if ($post->twitter): ?>
               <li>
                 <span>
                   <i class="icon icon-twitter"></i>
                 </span>
-                <a href="<?php echo $post->twitterLink; ?>"><?php echo $post->twitterText; ?></a>
+                <a href="http://www.twitter.com/<?php echo $post->twitterLink; ?>"><?php echo $post->twitter; ?></a>
               </li>
             <?php endif ?>
-            <!-- 
-            <li>
-              <span>
-                <i class="icon icon-website"></i>
-              </span>
-              <a href="#">google.com</a>
-            </li> -->
+            <?php if ($post->website): ?>
+              <li>
+                <span>
+                  <i class="icon icon-website"></i>
+                </span>
+                <a href="<?php echo (substr($post->website, 0, 4)!='http' ? 'http://' : '' ) .$post->website; ?>"><?php echo $post->website; ?></a>
+              </li>
+            <?php endif ?>
           </ul>
         </div>
         <div class="col-md-3">

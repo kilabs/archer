@@ -114,6 +114,55 @@
       </div>
     </div>
   <?php endif ?>
+
+  <div class="row form-dashboard-row">            
+    <div class="col-sm-3 col-xs-5">
+      <p class="form-dashboard-label">             
+    <?php echo $form->labelEx($model,'noTelp',array('class'=>'col-sm-2 control-label')); ?>     
+    </p>        
+    </div>
+    <div class="col-sm-6 col-xs-7">
+    <?php echo $form->textField($model,'noTelp',array('class'=>'form-control  form-dashboard-input','id'=>'cleditor')); ?>
+    <?php echo $form->error($model,'noTelp'); ?>
+    </div>
+  </div>
+
+  <div class="row form-dashboard-row">            
+    <div class="col-sm-3 col-xs-5">
+      <p class="form-dashboard-label">             
+    <?php echo $form->labelEx($model,'facebook',array('class'=>'col-sm-2 control-label')); ?>     
+    </p>        
+    </div>
+    <div class="col-sm-6 col-xs-7">
+    <?php echo $form->textField($model,'facebook',array('class'=>'form-control  form-dashboard-input','id'=>'cleditor')); ?>
+    <?php echo $form->error($model,'facebook'); ?>
+    </div>
+  </div>
+
+  <div class="row form-dashboard-row">            
+    <div class="col-sm-3 col-xs-5">
+      <p class="form-dashboard-label">             
+    <?php echo $form->labelEx($model,'twitter',array('class'=>'col-sm-2 control-label')); ?>     
+    </p>        
+    </div>
+    <div class="col-sm-6 col-xs-7">
+    <?php echo $form->textField($model,'twitter',array('class'=>'form-control  form-dashboard-input','id'=>'cleditor')); ?>
+    <?php echo $form->error($model,'twitter'); ?>
+    </div>
+  </div>
+
+  <div class="row form-dashboard-row">            
+    <div class="col-sm-3 col-xs-5">
+      <p class="form-dashboard-label">             
+    <?php echo $form->labelEx($model,'website',array('class'=>'col-sm-2 control-label')); ?>     
+    </p>        
+    </div>
+    <div class="col-sm-6 col-xs-7">
+    <?php echo $form->textField($model,'website',array('class'=>'form-control  form-dashboard-input','id'=>'cleditor')); ?>
+    <?php echo $form->error($model,'website'); ?>
+    </div>
+  </div>
+
   
 
 	<div class="row form-dashboard-row">           
