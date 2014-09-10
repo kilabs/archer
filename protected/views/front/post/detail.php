@@ -4,7 +4,7 @@
   Yii::app()->clientScript->registerMetaTag(Yii::app()->createAbsoluteUrl('post/detail',array('id'=>$post->id,'slug'=>$post->slug ? $post->slug : '-')),null,null,array('property'=>'og:url'));
  ?>
 <?php 
-  if (isset($post->cover) and $post->cover != null): 
+  if (isset($post->cover) and $post->cover != null):  
   Yii::app()->clientScript->registerMetaTag(LUpload::thumbs('PostGalery',$post->cover->image,'160x160',true),null,null,array('property'=>'og:image'));
   else:
   Yii::app()->clientScript->registerMetaTag(Yii::app()->getBaseUrl(true).'/themes/'.Yii::app()->theme->name.'/assets/img/placeholder.png',null,null,array('property'=>'og:image'));
@@ -103,12 +103,14 @@
           </div>
         </div>
         <!-- .row -->
-
-        <div class="row shop-related">
+        <?php $related = $post->getRelatedPost(3); ?>
+        <?php if (count($related) > 0): ?>
+          <div class="row shop-related">
           <div class="col-xs-12">
             <h5 class="roboto">Bengkel Serupa</h5>
           </div>
-          <div class="col-md-4"><div class="listing clearfix">
+          <?php foreach ($related as $key => $value): ?>
+             <div class="col-md-4"><div class="listing clearfix">
             <div class="col-md-3 listing-image-outer">
               <a class="listing-image block" href="#">
                 <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/mtb.jpg">
@@ -117,73 +119,26 @@
             <div class="col-md-9">
               <div class="listing-info">
                 <h5 class="roboto">
-                  <a href="#">Bengkel Sepeda "Maju Mundur"</a>
+                  <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug ? $value->slug : '-')); ?>"><?php echo CHtml::encode($value->judul); ?></a>
                 </h5>
                 <p class="small clearfix">
-                  <a class="pull-left listing-category" href="#">
+                  <a class="pull-left listing-category" href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->kategori->slug ? $value->kategori->slug : '-')); ?>">
                     <i class="icon icon-folder"></i>
-                    Bengkel Sepeda
+                    <?php echo CHtml::encode(@$value->kategori->nama); ?>
                   </a>
                   <span class="pull-left listing-location green">
                     <i class="icon icon-location"></i>
-                    Jakarta
+                    <?php echo CHtml::encode(@$value->lokasi->nama); ?>
                   </span>
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4"><div class="listing clearfix">
-          <div class="col-md-3 listing-image-outer">
-            <a class="listing-image block" href="#">
-              <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/mtb.jpg">
-            </a>
-          </div>
-          <div class="col-md-9">
-            <div class="listing-info">
-              <h5 class="roboto">
-                <a href="#">Bengkel Sepeda "Maju Mundur"</a>
-              </h5>
-              <p class="small clearfix">
-                <a class="pull-left listing-category" href="#">
-                  <i class="icon icon-folder"></i>
-                  Bengkel Sepeda
-                </a>
-                <span class="pull-left listing-location green">
-                  <i class="icon icon-location"></i>
-                  Jakarta
-                </span>
-              </p>
-            </div>
-          </div>
+        <?php endforeach ?>
+         
         </div>
-      </div>
-      <div class="col-md-4"><div class="listing clearfix">
-        <div class="col-md-3 listing-image-outer">
-          <a class="listing-image block" href="#">
-            <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/mtb.jpg">
-          </a>
-        </div>
-        <div class="col-md-9">
-          <div class="listing-info">
-            <h5 class="roboto">
-              <a href="#">Bengkel Sepeda "Maju Mundur"</a>
-            </h5>
-            <p class="small clearfix">
-              <a class="pull-left listing-category" href="#">
-                <i class="icon icon-folder"></i>
-                Bengkel Sepeda
-              </a>
-              <span class="pull-left listing-location green">
-                <i class="icon icon-location"></i>
-                Jakarta
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        <?php endif ?>
   <!-- .row.shop-related -->
   <!-- .shop-related -->
 </div>
