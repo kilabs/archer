@@ -49,7 +49,7 @@ $this->breadcrumbs=array(
             <span class="pull-left">
               <a href="<?php echo Yii::app()->createUrl('/site/forgetPassword'); ?>">Lupa Password</a>&nbsp;|
               <a class="" href="<?php 
-              echo Yii::app()->facebook->getLoginUrl(array(  'redirect_uri'  => $this->createAbsoluteUrl('LoginFb') ));
+              echo Yii::app()->facebook->getLoginUrl(array( 'scope'  => 'email' ,'redirect_uri'  => $this->createAbsoluteUrl('LoginFb') ));
               ?>"><i class="glyphicon glyphicon-shopping-cart"></i>Facebook Login</a>
             </span>
             <span class="pull-right">

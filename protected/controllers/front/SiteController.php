@@ -308,8 +308,7 @@ class SiteController extends Controller
         if($fbid and isset($user_info['email'])){
         	
             $member = Member::model()->findByAttributes(array('email'=>$user_info['email']));
-
-            if($member == null){
+            if($member == null){ 
                 $this->redirect(array('register'));
             }
             $auth = new FrontUserIdentity($member->email, $member->password);
@@ -334,7 +333,7 @@ class SiteController extends Controller
             }
         }
         else{
-            $this->redirect(Yii::app()->facebook->getLoginUrl());
+            $this->redirect(Yii::app()->facebook->getLoginUrl(array('scope'	=> 'email')));
         }
     }
 }

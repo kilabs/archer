@@ -35,8 +35,8 @@ return array(
 	'components'=>array(
 		'facebook'=>array(
 		    'class' => 'ext.yii-facebook-opengraph.SFacebook',
-		    'appId'=>'602365923192329', // needed for JS SDK, Social Plugins and PHP SDK
-		    'secret'=>'74e4b7edb6939820af29acd0c09c8155', // needed for the PHP SDK
+		    'appId'=>'868125706574539', // needed for JS SDK, Social Plugins and PHP SDK
+		    'secret'=>'dfabd54a2577994d5f2c513804ab90b8', // needed for the PHP SDK
                     'locale'=>'en_US',
 		    'jsCallback'=>true,
   		),	
