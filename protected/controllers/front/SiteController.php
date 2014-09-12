@@ -116,6 +116,8 @@ class SiteController extends Controller
         if($fbid and isset($user_info['email'])){
 			$model->email = $user_info['email'];
 			$model->fbid = $fbid;
+			$model->namaLengkap = $user_info['name'];
+			$model->facebook = $user_info['id'];
 		}
 		if(isset($_POST['RegisterForm'])){
 			$model->attributes = $_POST['RegisterForm'];
@@ -305,6 +307,7 @@ class SiteController extends Controller
     public function actionLoginFb(){
         $fbid = Yii::app()->facebook->getUser();
         $user_info	= Yii::app()->facebook->api('/' . $fbid);
+
         if($fbid and isset($user_info['email'])){
         	
             $member = Member::model()->findByAttributes(array('email'=>$user_info['email']));
