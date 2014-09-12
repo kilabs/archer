@@ -204,7 +204,7 @@ class Post extends CActiveRecord
 	}
 
 	public function excerpt($limit=20){
-		$words = explode(' ', strip_tags($this->detail->kontent) );
+		$words = explode(' ', strip_tags(@$this->detail->kontent) );
 
 	    //if excerpt has more than 20 words, truncate it and append ... 
 	    if( count($words) > 20 ){
@@ -213,5 +213,12 @@ class Post extends CActiveRecord
 
 	    //otherwise just put it back together and return it
 	    return implode(' ', $words);
+	}
+
+	public function getRelatedPost($limit = 3){
+		$criteria = new CDbCriteria();
+		$criteria->with = array('kategori','lokasi');
+		$criteria->compare('idKategori',$this->idKategori);
+		return self::model()->findAll($criteria);
 	}
 }

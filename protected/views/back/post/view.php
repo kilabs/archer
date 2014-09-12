@@ -32,7 +32,7 @@ $this->menu=array(
 		),
 		array(
 			'name'=>'foto',
-			'value'=>'<img src="'.LUpload::raw('Post',$model->foto).'" />',
+			'value'=>(isset($model->cover) and $model->cover) '-' : '<img src="'.LUpload::raw('PostGalery',$cover->image).'" />',
 			'type'=>'raw',
 		),
 		array(

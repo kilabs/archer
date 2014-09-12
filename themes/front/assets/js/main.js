@@ -67,9 +67,12 @@ $(window).load(function() {
 
   $('.shop-content > div').equalHeight();
 
-  $('.dashboard-menu').stick_in_parent({
-    parent: '.page-dashboard'
-  });
+  if (jQuery.isFunction(jQuery.fn.stick_in_parent)) {
+    $('.dashboard-menu').stick_in_parent({
+      parent: '.page-dashboard'
+    });
+  }
+  
 
 });
 

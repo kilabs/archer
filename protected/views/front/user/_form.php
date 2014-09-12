@@ -53,7 +53,7 @@
     </p>        
 		</div>
     <div class="col-sm-6 col-xs-7">
-		<?php echo $form->textArea($model,'kontent',array('class'=>'form-control form-dashboard-input','id'=>'cleditor')); ?>
+		<?php echo $form->textArea($model,'kontent',array('class'=>'form-control form-dashboard-input')); ?>
 		<?php echo $form->error($model,'kontent'); ?>
 		</div>
 	</div>
@@ -101,6 +101,17 @@
 		</div>
   </div>
 
+    <div class="row form-dashboard-row">
+       <div class="col-sm-3 col-xs-5">
+      <p class="form-dashboard-label">
+       <?php echo $form->labelEx($model,'layanan',array('class'=>'col-sm-2 control-label')); ?> 
+       </p>    
+    </div>
+    <div class="col-sm-6 col-xs-7">
+            <?php echo $form->textField($model,'layanan',array('class'=>'form-control','id'=>'tags')); ?>
+        </div>
+    </div>
+
   <?php if ($model->isNewRecord): ?>
     <div class="row form-dashboard-row">            
       <div class="col-sm-3 col-xs-5">
@@ -109,7 +120,7 @@
       </p>    
       </div>
       <div class="col-sm-6 col-xs-7">
-      <?php echo $form->fileField($model,'fotoFile',array('class'=>'form-control  form-dashboard-input')); ?>
+      <?php echo $form->fileField($model,'fotoFile',array('class'=>'')); ?>
       <?php echo $form->error($model,'fotoFile'); ?>
       </div>
     </div>
@@ -122,7 +133,7 @@
     </p>        
     </div>
     <div class="col-sm-6 col-xs-7">
-    <?php echo $form->textField($model,'noTelp',array('class'=>'form-control  form-dashboard-input','id'=>'cleditor')); ?>
+    <?php echo $form->textField($model,'noTelp',array('class'=>'form-control  form-dashboard-input')); ?>
     <?php echo $form->error($model,'noTelp'); ?>
     </div>
   </div>
@@ -134,7 +145,7 @@
     </p>        
     </div>
     <div class="col-sm-6 col-xs-7">
-    <?php echo $form->textField($model,'facebook',array('class'=>'form-control  form-dashboard-input','id'=>'cleditor')); ?>
+    <?php echo $form->textField($model,'facebook',array('class'=>'form-control  form-dashboard-input')); ?>
     <?php echo $form->error($model,'facebook'); ?>
     </div>
   </div>
@@ -146,7 +157,7 @@
     </p>        
     </div>
     <div class="col-sm-6 col-xs-7">
-    <?php echo $form->textField($model,'twitter',array('class'=>'form-control  form-dashboard-input','id'=>'cleditor')); ?>
+    <?php echo $form->textField($model,'twitter',array('class'=>'form-control  form-dashboard-input')); ?>
     <?php echo $form->error($model,'twitter'); ?>
     </div>
   </div>
@@ -158,7 +169,7 @@
     </p>        
     </div>
     <div class="col-sm-6 col-xs-7">
-    <?php echo $form->textField($model,'website',array('class'=>'form-control  form-dashboard-input','id'=>'cleditor')); ?>
+    <?php echo $form->textField($model,'website',array('class'=>'form-control  form-dashboard-input')); ?>
     <?php echo $form->error($model,'website'); ?>
     </div>
   </div>
@@ -224,7 +235,6 @@
 
 
 <?php
-$this->renderPartial('/layouts/cleditor');
 Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/assets/css/bootstrap-fileupload.min.css');
 
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/assets/plugins/jasny/js/bootstrap-fileupload.js',  CClientScript::POS_END);
