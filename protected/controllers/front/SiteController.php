@@ -111,6 +111,12 @@ class SiteController extends Controller
 
 	public function actionRegister(){
 		$model = new RegisterForm();
+		$fbid = Yii::app()->facebook->getUser();
+        $user_info	= Yii::app()->facebook->api('/' . $fbid);
+        if($fbid and isset($user_info['email'])){
+			$model->email = $user_info['email'];
+			$model->fbid = $fbid;
+		}
 		if(isset($_POST['RegisterForm'])){
 			$model->attributes = $_POST['RegisterForm'];
 			if($model->validate()){
@@ -295,4 +301,40 @@ class SiteController extends Controller
                 'model'=>$model,
             ));
         }
+
+    public function actionLoginFb(){
+        $fbid = Yii::app()->facebook->getUser();
+        $user_info	= Yii::app()->facebook->api('/' . $fbid);
+        if($fbid and isset($user_info['email'])){
+        	
+            $member = Member::model()->findByAttributes(array('email'=>$user_info['email']));
+
+            if($member == null){
+                $this->redirect(array('register'));
+            }
+            $auth = new FrontUserIdentity($member->email, $member->password);
+            if ($auth->authenticateHashed() == FrontUserIdentity::ERROR_NONE){
+                //if (Yii::app()->user->role == '99'){
+                //    $this->redirect('default/index');
+                //}else{
+                Yii::app()->user->login($auth,0);  
+                
+                $session = Yii::app()->session;
+                if(isset($session['returnUrl'])){
+                    $url = $session['returnUrl'];
+                    unset($session['returnUrl']);
+                    $this->redirect($url);
+                }
+                else{
+                    $this->redirect(array('user/profil'));
+                }
+            }
+            else{
+                $this->redirect(array('register'));
+            }
+        }
+        else{
+            $this->redirect(Yii::app()->facebook->getLoginUrl());
+        }
+    }
 }

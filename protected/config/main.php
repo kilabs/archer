@@ -33,6 +33,13 @@ return array(
 
 	// application components
 	'components'=>array(
+		'facebook'=>array(
+		    'class' => 'ext.yii-facebook-opengraph.SFacebook',
+		    'appId'=>'602365923192329', // needed for JS SDK, Social Plugins and PHP SDK
+		    'secret'=>'74e4b7edb6939820af29acd0c09c8155', // needed for the PHP SDK
+                    'locale'=>'en_US',
+		    'jsCallback'=>true,
+  		),	
 		'formatter'=>array(
 			'class'=>'CFormatter',
 		),

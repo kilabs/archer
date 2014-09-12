@@ -47,7 +47,10 @@ $this->breadcrumbs=array(
           <hr>
           <p class="clearfix">
             <span class="pull-left">
-              <a href="<?php echo Yii::app()->createUrl('/site/forgetPassword'); ?>">Lupa Password</a>
+              <a href="<?php echo Yii::app()->createUrl('/site/forgetPassword'); ?>">Lupa Password</a>&nbsp;|
+              <a class="" href="<?php 
+              echo Yii::app()->facebook->getLoginUrl(array(  'redirect_uri'  => $this->createAbsoluteUrl('LoginFb') ));
+              ?>"><i class="glyphicon glyphicon-shopping-cart"></i>Facebook Login</a>
             </span>
             <span class="pull-right">
               Belum punya akun? 
