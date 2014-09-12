@@ -312,7 +312,8 @@ class SiteController extends Controller
                 $this->redirect(array('register'));
             }
             $auth = new FrontUserIdentity($member->email, $member->password);
-            if ($auth->authenticateHashed() == FrontUserIdentity::ERROR_NONE){
+            $status = $auth->authenticateHashed();
+            if ($status == FrontUserIdentity::ERROR_NONE){
                 //if (Yii::app()->user->role == '99'){
                 //    $this->redirect('default/index');
                 //}else{
@@ -328,8 +329,12 @@ class SiteController extends Controller
                     $this->redirect(array('user/profil'));
                 }
             }
+            else if($status == FrontUserIdentity::ERROR_USER_NOT_CONFIRM){
+				Yii::app()->user->setFlash('statusKonfirm','User Not konfirmed.');
+				$this->redirect(array('site/login'));
+			}
             else{
-                $this->redirect(array('register'));
+                $this->redirect(array('site/login'));
             }
         }
         else{

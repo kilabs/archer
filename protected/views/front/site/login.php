@@ -31,7 +31,11 @@ $this->breadcrumbs=array(
                 <p>
       		<?php echo $form->passwordField($model,'password',array('class'=>'form-control','placeholder'=>'password')); ?>
       		<?php echo $form->error($model,'password'); ?>
-          <?php if ($model->getError('statusKonfirm')): ?>
+          <?php if ($model->getError('statusKonfirm') or Yii::app()->user->hasFlash('statusKonfirm')): 
+            if(Yii::app()->user->hasFlash('statusKonfirm')){
+                Yii::app()->user->getFlash('statusKonfirm');
+            }
+          ?>
             <div class="alert alert-warning" role="alert">
               Your Email has not been confirmed click <?php echo CHtml::link('here',array('/site/sendEmailKonfirmation')) ?> to send email konfirmation
             </div>
