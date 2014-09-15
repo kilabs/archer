@@ -112,9 +112,15 @@
           <?php foreach ($related as $key => $value): ?>
              <div class="col-md-4"><div class="listing clearfix">
             <div class="col-md-3 listing-image-outer">
-              <a class="listing-image block" href="#">
-                <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/mtb.jpg">
-              </a>
+              <?php if (isset($value->cover) and $value->cover != null): ?>
+                <a class="listing-image block" href="#">
+                  <img alt="" class="block" src="<?php echo LUpload::thumbs('PostGalery',$value->cover->image,'92x65'); ?>">
+                </a>
+              <?php else: ?>
+                <a class="listing-image block" href="#">
+                  <img alt="" class="block" src="<?php echo Yii::app()->theme->baseUrl ?>/uploads/mtb.jpg">
+                </a>
+              <?php endif; ?>
             </div>
             <div class="col-md-9">
               <div class="listing-info">
