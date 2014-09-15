@@ -53,7 +53,34 @@
     </p>        
 		</div>
     <div class="col-sm-6 col-xs-7">
-		<?php echo $form->textArea($model,'kontent',array('class'=>'form-control form-dashboard-input')); ?>
+		 <?php
+              $this->widget('ext.redactor.ERedactorWidget',array(
+                  'model'=>$model,
+                  'attribute'=>'kontent',
+                  'options'=>array(
+                      'fileUpload'=>Yii::app()->createUrl('user/fileUpload',array(
+                          'attr'=>'full',
+                      )),
+                      'fileUploadErrorCallback'=>new CJavaScriptExpression(
+                          'function(obj,json) { alert(json.error); }'
+                      ),
+                      'imageUpload'=>Yii::app()->createUrl('user/imageUpload',array(
+                          'attr'=>'full',
+                      )),
+                      'imageGetJson'=>Yii::app()->createUrl('user/imageList',array(
+                          'attr'=>'full',
+                      )),
+                      'imageUploadErrorCallback'=>new CJavaScriptExpression(
+                          'function(obj,json) { alert(json.error); }'
+                      ),
+                      'blurCallback'=>'js:function(){ 
+                        
+                      }',
+                      'style'=>'height:200px'
+                  ),          
+              
+              ));
+          ?>
 		<?php echo $form->error($model,'kontent'); ?>
 		</div>
 	</div>
