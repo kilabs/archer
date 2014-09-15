@@ -132,7 +132,7 @@
     <h5 class="roboto">Temukan kami di</h5>
     <ul class="list-inline">
       <li><a href="http://facebook.com/bengkelin">Facebook</a></li>
-      <li><a href="http://twitter.com/bengkel_in">Twitter</a></li>
+      <li><a href="http://twitter.com/BengkelinCom">Twitter</a></li>
       <li><a href="http://plus.google.com/+bengkelin">Google+</a></li>
       <li><a href="http://youtube.com/bengkelin">Youtube</a></li>
     </ul>
