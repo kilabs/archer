@@ -9,6 +9,31 @@ class UserController extends Controller
 		'listBengkel'=>array('label'=>'Layanan','url'=>array('/user/daftarBengkel')),
 	);
 
+	public function actions()
+    {
+        return array(
+            'fileUpload'=>array(
+                'class'=>'ext.redactor.actions.FileUpload',
+                'uploadPath'=>Yii::getPathOfAlias('webroot').'/upload', 
+                'uploadUrl'=>Yii::app()->request->baseUrl.'/upload',
+                'uploadCreate'=>true,
+                'permissions'=>0775,
+            ),
+            'imageUpload'=>array(
+                'class'=>'ext.redactor.actions.ImageUpload',
+                'uploadPath'=>Yii::getPathOfAlias('webroot').'/upload', 
+                'uploadUrl'=>Yii::app()->request->baseUrl.'/upload',
+                'uploadCreate'=>true,
+                'permissions'=>0775,
+            ),
+            'imageList'=>array(
+                'class'=>'ext.redactor.actions.ImageList',
+                'uploadPath'=>Yii::getPathOfAlias('webroot').'/upload',
+                'uploadUrl'=>Yii::app()->request->baseUrl.'/upload',
+            ),
+        );
+    }
+
 	public function actionProfil()
 	{
 		
