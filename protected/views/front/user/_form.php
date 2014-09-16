@@ -104,6 +104,7 @@
                 marker.setPosition(myLatlng);
            }")
        ),
+       'htmlOptions'=>array('class'=>'form-control  form-dashboard-input')
   )); ?>
 		<?php echo $form->error($model,'idLokasi'); ?>
 		</div>
