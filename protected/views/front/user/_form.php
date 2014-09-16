@@ -73,11 +73,38 @@
 	<div class="row form-dashboard-row">            
     <div class="col-sm-3 col-xs-5">
       <p class="form-dashboard-label">          
-		<?php echo $form->labelEx($model,'idLokasi',array('class'=>'col-sm-2 control-label')); ?>         
+
+		<?php  echo $form->labelEx($model,'idLokasi',array('class'=>'col-sm-2 control-label')); ?>         
     </p>    
 		</div>
     <div class="col-sm-6 col-xs-7">
-		<?php echo $form->dropDownList($model,'idLokasi',CHtml::listData(Lokasi::model()->findAll(),'id','nama'),array('class'=>'form-control  form-dashboard-input')); ?>
+		<?php $this->widget('ext.typeahead.TbTypeAhead',array(
+       'model' => $model,
+       'attribute' => 'idLokasi',
+       'enableHogan' => true,
+       'options' => array(
+           array(
+               'name' => 'lokasis',
+               'valueKey' => 'nama',
+               'remote' => array(
+                   'url' => Yii::app()->createUrl('user/lokasiList') . '?term=%QUERY',
+               ),
+               'template' => '<p>{{negara}}-<strong>{{nama}}</strong></p>',
+               'engine' => new CJavaScriptExpression('Hogan'),
+           )
+       ),
+       'events' => array(
+           'selected' => new CJavascriptExpression("function(obj, datum, name) {
+               console.log(obj);
+               console.log(datum);
+               console.log(name);
+
+               var myLatlng = new google.maps.LatLng(datum.lat,datum.lng);
+                map.setCenter(myLatlng);
+                marker.setPosition(myLatlng);
+           }")
+       ),
+  )); ?>
 		<?php echo $form->error($model,'idLokasi'); ?>
 		</div>
   </div>
@@ -254,16 +281,16 @@ Yii::app()->clientScript->registerScript('slug',
 $js =    '
   var map;
   var marker;
-  $("#Post_idLokasi").change(function(){
-    var url = "'.Yii::app()->createUrl('/user/latlongLokasi').'";
-    $.post(url,{ id : $(this).val() }, function(ret){
-      if(ret){
-        var myLatlng = new google.maps.LatLng(ret.lat,ret.lng);
-        map.setCenter(myLatlng);
-        marker.setPosition(myLatlng);
-      }
-    },"json");
-  });
+  // $("#Post_idLokasi").change(function(){
+  //   var url = "'.Yii::app()->createUrl('/user/latlongLokasi').'";
+  //   $.post(url,{ id : $(this).val() }, function(ret){
+  //     if(ret){
+  //       var myLatlng = new google.maps.LatLng(ret.lat,ret.lng);
+  //       map.setCenter(myLatlng);
+  //       marker.setPosition(myLatlng);
+  //     }
+  //   },"json");
+  // });
   Dropzone.autoDiscover = false;
   
   $("#photosUpload").dropzone({

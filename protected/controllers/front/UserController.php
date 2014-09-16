@@ -226,5 +226,26 @@ class UserController extends Controller
 			'model'=>$model,
 		));
 	}
+
+
+	public function actionLokasiList(){
+		$term = Yii::app()->request->getQuery('term');
+		$criteria = new CDbCriteria();
+		$criteria->addCondition('nama LIKE :nama');
+		$criteria->params[':nama'] = "%$term%";
+        $criteria->limit = 20;
+        $lokasis = Lokasi::model()->findAll($criteria);
+        $lists = array();
+        foreach($lokasis as $lokasi) {
+            $lists[] = array(
+                'id' => $lokasi->id,
+                'nama' => $lokasi->nama,
+                'negara' => $lokasi->negara,
+                'lat'=>$lokasi->lat,
+                'lng'=>$lokasi->lng,
+            );
+        }
+        echo json_encode($lists);
+	}
 }
 	
