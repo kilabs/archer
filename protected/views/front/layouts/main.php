@@ -100,19 +100,17 @@
       <div class="col-md-2 offset-md-1">
         <h4 class="roboto">Bengkelin</h4>
         <ul>
-          <li><a href="<?php echo Yii::app()->createUrl('/site/page',array('view'=>'about')); ?>">Tentang Kami</a></li>
-          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'term')); ?>">Aturan Penggunaan</a></li>
+          <li><a href="<?php echo Yii::app()->createUrl('/site/page',array('view'=>'about')); ?>">Tentang Bengkelin</a></li>
+          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'term')); ?>">Syarat & Ketentuan</a></li>
           <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'policy')); ?>">Kebijakan Privasi</a></li>
-          <li><a href="#">Berita & Pengumuman</a></li>
+          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'ganti-rugi')); ?>">Ganti Rugi</a></li>
         </ul>
       </div>
       <div class="col-md-2">
         <h4 class="roboto">Pembeli</h4>
         <ul>
-          <li><a href="#">Cara Belanja</a></li>
-          <li><a href="#">Pembayaran</a></li>
-          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'tips-aman-pelanggan')); ?>">Tips Berbelanja</a></li>
-          <li><a href="#">Keamanan Pembeli</a></li>
+          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'tips-aman-pelanggan')); ?>">Tips Aman Pelanggan</a></li>
+          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'pelaporan-penipuan')); ?>"> Pelaporan Penipuan</a></li>
         </ul>
       </div>
       <div class="col-md-2">
