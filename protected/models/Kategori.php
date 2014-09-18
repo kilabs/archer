@@ -159,6 +159,7 @@ class Kategori extends CActiveRecord
 		return $ret;
 	}
 	public static function listParent2($except=null){
+		$ret = array();
 		$arrs = self::fetchChild(0,0,$except);
 		foreach ($arrs as $key => $value) {
 			$id = $value['id'];
