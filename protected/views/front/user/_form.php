@@ -137,24 +137,9 @@
 		</div>
   </div>
 
-
-	<div class="row form-dashboard-row">            
-    <div class="col-sm-3 col-xs-5">
-      <p class="form-dashboard-label"> 
-		<?php echo CHtml::label('Posisi',null,array('class'=>'col-sm-2 control-label')); ?>
-	   </p>    
-    </div>
-    <div class="col-sm-6 col-xs-7">
-		   	 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-		    <div id="map-canvas" style="height:270px;width:450px">
-
-		    </div>
-        <?php echo $form->hiddenField($model,'lat',array('id'=>'lat')); ?>
+  <?php echo $form->hiddenField($model,'lat',array('id'=>'lat')); ?>
         <?php echo $form->hiddenField($model,'lng',array('id'=>'lng')); ?>
         <?php echo $form->hiddenField($model,'zoom',array('id'=>'zoom')); ?>
-
-		</div>
-  </div>
 
     <div class="row form-dashboard-row">
        <div class="col-sm-3 col-xs-5">
