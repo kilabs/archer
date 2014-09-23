@@ -312,7 +312,7 @@ class SiteController extends Controller
 
         if($fbid and isset($user_info['email'])){
         	
-            $member = Member::model()->findByAttributes(array('email'=>$user_info['email']));
+            $member = Member::model()->findByAttributes(array('fbid'=>$fbid));
             if($member == null){ 
                 $this->redirect(array('register'));
             }
