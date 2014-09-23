@@ -29,8 +29,34 @@
             <?php echo CHtml::activeTextField($search,'q',array('placeholder'=>'Kata Pencarian...','class'=>'form-control','name'=>'q')); ?>
           </div>
           <div class="col-md-3">
-            <?php echo CHtml::activeDropDownList($search,'idLokasi',
-              CHtml::listData(Lokasi::model()->findAll(),'id','nama'),array('class'=>'form-control','name'=>'idLokasi','empty'=>'all')) ?>
+            <?php $this->widget('ext.typeahead.TbTypeAhead',array(
+               'model' => $search,
+               'attribute' => 'idLokasi',
+               'enableHogan' => true,
+               'options' => array(
+                   array(
+                       'name' => 'lokasis',
+                       'valueKey' => 'nama',
+                       'remote' => array(
+                           'url' => Yii::app()->createUrl('site/lokasiList') . '?term=%QUERY',
+                       ),
+                       'template' => '<p>{{negara}}-<strong>{{nama}}</strong></p>',
+                       'engine' => new CJavaScriptExpression('Hogan'),
+                   )
+               ),
+               'events' => array(
+                   'selected' => new CJavascriptExpression("function(obj, datum, name) {
+                       console.log(obj);
+                       console.log(datum);
+                       console.log(name);
+
+                       var myLatlng = new google.maps.LatLng(datum.lat,datum.lng);
+                        map.setCenter(myLatlng);
+                        marker.setPosition(myLatlng);
+                   }")
+               ),
+               'htmlOptions'=>array('class'=>'form-control','placeholder'=>'Lokasi')
+          )); ?>
           </div>
           <div class="col-md-3">
             <?php echo CHtml::activeDropDownList($search,'sort',
