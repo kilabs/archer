@@ -34,7 +34,7 @@ $this->breadcrumbs=array(
 				<?php echo $form->error($model,'username'); ?>
 	 </p>
           <p>
-		<?php echo $form->textField($model,'email',array('class'=>'form-control','placeholder'=>'Email')); ?>
+		<?php echo $form->textField($model,'email',array('class'=>'form-control','placeholder'=>'Email','readonly'=>!empty($model->fbid))); ?>
 		<?php echo $form->error($model,'email'); ?>
 	 </p>
           <p>
@@ -53,6 +53,9 @@ $this->breadcrumbs=array(
   </p>
   <p>
     <input class="block" type="submit" value="Daftar Akun">
+    <a class="btn block" href="<?php 
+  	echo Yii::app()->facebook->getLoginUrl(array( 'scope'  => 'email' ,'redirect_uri'  => $this->createAbsoluteUrl('LoginFb') ));
+  ?>"><i class="glyphicon glyphicon-shopping-cart"></i>Facebook Login</a>
   </p>
 
 <?php $this->endWidget(); ?>
