@@ -112,7 +112,9 @@ class SiteController extends Controller
 	public function actionRegister(){
 		$model = new RegisterForm();
 		$fbid = Yii::app()->facebook->getUser();
-        $user_info	= Yii::app()->facebook->api('/' . $fbid);
+		if($fbid){
+			$user_info	= Yii::app()->facebook->api('/' . $fbid);
+		}
         if($fbid and isset($user_info['email'])){
 			$model->email = $user_info['email'];
 			$model->fbid = $fbid;
