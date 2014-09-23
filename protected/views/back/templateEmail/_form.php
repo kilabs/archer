@@ -26,7 +26,7 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'proses',array('class'=>'col-sm-2 control-label')); ?>
             <div class="col-sm-10">
-		<?php echo $form->textField($model,'proses',array('size'=>60,'maxlength'=>255,'class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'proses',array('size'=>60,'maxlength'=>255,'class'=>'form-control','disabled'=>'disabled')); ?>
 	</div>
                     <?php echo $form->error($model,'proses'); ?>
 	</div>
