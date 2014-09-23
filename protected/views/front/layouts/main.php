@@ -7,9 +7,12 @@
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="google-site-verification" content="2X55Ehsp6e9A3R2AoBFXYWs9EHCKDZPXdACGxv_xVss" />
-  <title>Bengkelin - Jasa dan Servis Apapun Ada</title>
-  <meta name="description" content="Portal jasa dan servis, mulai jasa sewa hingga semua jenis servis atau layanan"/>
-  <meta name="keyword" content="jasa sewa diesel, servis ac, servis mobil, jasa bengkel, servis bengkel">
+  <meta name="google-site-verification" content="2X55Ehsp6e9A3R2AoBFXYWs9EHCKDZPXdACGxv_xVss" />
+  <meta name="msvalidate.01" content="D09B7D034DFA185BE2BAAEFBDB638413" />
+  <meta name="alexaVerifyID" content="LsuZ97xXsfJg-w4BJM5qQREZ_L0"/>
+  <title>Bengkelin - Direktori Jasa dan Servis</title>
+  <meta name="description" content="direktori penyedia jasa rumah tangga hingga perkantoran, mulai dari servis ac, sewa genset, jasa penerjemah, jasa kesehatan hingga jasa montir mobil">
+  <meta name="keyword" content="jasa rumah tangga, sercis ac, sewa genset, jasa penerjemah, jasa kesehatan, jasa montir mobil">
 
   <link href="<?php echo Yii::app()->theme->baseUrl ?>/assets/css/style.css" rel="stylesheet" type="text/css" />
   <script>
@@ -59,26 +62,26 @@
       $criteria = new CDbCriteria();
       $criteria->with = array('childs'=>array(
         'on'=>'childs.status = '.Kategori::STATUS_AKTIF
-      ));
+        ));
       $criteria->addCondition('t.status='.Kategori::STATUS_AKTIF.' and t.idParent=0');
       $criteria->limit = 8;
       $kategoris = Kategori::model()->findAll($criteria); ?>
       <?php foreach ($kategoris as $key => $value): ?>
-        <?php if (count($value->childs) == 0): ?>
-          <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug ? $value->slug : '-')); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
-        <?php else: ?>
-           <li>
-                <a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug  ? $value->slug : '-')); ?>"><?php echo CHtml::encode($value->nama); ?></a></i>
-                </a>
-                <ul class="list-unstyled">
-                <?php foreach ($value->childs as $key2 => $value2): ?>
-                  <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value2->slug  ? $value2->slug : '-')); ?>"><?php echo CHtml::encode($value2->nama); ?></a></li>
-                <?php endforeach ?>
-                </ul>
-          </li>
-        <?php endif ?>
-      <?php endforeach ?>    
+      <?php if (count($value->childs) == 0): ?>
+      <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug ? $value->slug : '-')); ?>"><?php echo CHtml::encode($value->nama); ?></a></li>
+    <?php else: ?>
+    <li>
+      <a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->slug  ? $value->slug : '-')); ?>"><?php echo CHtml::encode($value->nama); ?></a></i>
+    </a>
+    <ul class="list-unstyled">
+      <?php foreach ($value->childs as $key2 => $value2): ?>
+      <li><a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value2->slug  ? $value2->slug : '-')); ?>"><?php echo CHtml::encode($value2->nama); ?></a></li>
+    <?php endforeach ?>
   </ul>
+</li>
+<?php endif ?>
+<?php endforeach ?>    
+</ul>
 </div>
 </div>
 <!-- .container -->
