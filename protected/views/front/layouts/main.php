@@ -119,7 +119,9 @@
       <div class="col-md-2">
         <h4 class="roboto">Penjual</h4>
         <ul>
-          <li><a href="#">Pelanggaran</a></li>
+           
+          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'faq-penjual')); ?>">FAQ Penjual</a></li>
+          <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'pelanggaran')); ?>">Pelanggaran</a></li>
           <li><a href="#">Ketentuan Anggota</a></li>
           <li><a href="<?php  echo Yii::app()->createUrl('/site/page',array('view'=>'tips-aman-pebisnis')); ?>">Tips Berjualan</a></li>
         </ul>
