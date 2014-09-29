@@ -57,14 +57,6 @@
             <?php endif ?>
           </ul>
         </div>
-        <div class="col-md-3">
-          <p>
-            <a class="btn btn-red block" href="#">Rekomendasikan</a>
-          </p>
-          <p>
-            <a class="btn block" href="#">Hubungi Toko</a>
-          </p>
-        </div>
       </div>
       <!-- .row.shop-header -->
 
@@ -99,7 +91,7 @@
 
             <div class="addthis_native_toolbox"></div></p>
           </div>
-          <div class="col-md-4 shop-map">
+          <div class="col-md-4">
           </div>
         </div>
         <!-- .row -->
