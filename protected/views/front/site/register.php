@@ -53,6 +53,8 @@ $this->breadcrumbs=array(
   </p>
   <p>
     <input class="block" type="submit" value="Daftar Akun">
+    <br>
+    <br>
     <a class="btn block" href="<?php 
   	echo Yii::app()->facebook->getLoginUrl(array( 'scope'  => 'email' ,'redirect_uri'  => $this->createAbsoluteUrl('LoginFb') ));
   ?>"><i class="glyphicon glyphicon-shopping-cart"></i>Facebook Login</a>
