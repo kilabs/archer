@@ -91,7 +91,7 @@ endif ?>
 
   <div class="addthis_native_toolbox"></div></p>
 </div>
-<div class="col-md-4">
+<div class="col-md-4" style="margin-top: 20px;margin-left: 0px;">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <!-- Bengkelin Profile Ads -->
   <ins class="adsbygoogle"
