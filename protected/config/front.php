@@ -19,7 +19,7 @@ return CMap::mergeArray(
                     'activate/<token:.*?>'=>'site/activate',
 					'kategori/<kategori:.*?>/'=>'post/list', 
                     'search'=>'post/list', 
-					'bengkel/<id:.*?>/<slug:.*?>'=>'post/detail', 
+					'bengkel/<kategori:.*?>/<id:.*?>/<slug:.*?>'=>'post/detail', 
 				),
 			),
         ),

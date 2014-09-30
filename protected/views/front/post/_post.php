@@ -3,7 +3,7 @@
         <i class="icon icon-check"></i>
       </div>
       <div class="col-md-4 listing-image-outer">
-        <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$data->id,'slug'=>$data->slug ? $data->slug : '-')); ?>" class="listing-image block">
+        <a href="<?php echo Yii::app()->createUrl('post/detail',array('kategori'=>$data->kategori->slug,'id'=>$data->id,'slug'=>$data->slug ? $data->slug : '-')); ?>" class="listing-image block">
           <?php if (isset($data->cover) and $data->cover != null): ?>
             <img src="<?php echo LUpload::thumbs('PostGalery',$data->cover->image,'160x112'); ?>" class="block" alt="<?php echo CHtml::encode($data->judul); ?>">
           <?php else: ?>
@@ -14,7 +14,7 @@
       <div class="col-md-8">
         <div class="listing-info">
           <h4 class="roboto">
-            <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$data->id,'slug'=>$data->slug ? $data->slug : '-')); ?>"><?php echo CHtml::encode($data->judul); ?></a>
+            <a href="<?php echo Yii::app()->createUrl('post/detail',array('kategori'=>$data->kategori->slug,'id'=>$data->id,'slug'=>$data->slug ? $data->slug : '-')); ?>"><?php echo CHtml::encode($data->judul); ?></a>
           </h4>
           <p class="clearfix">
             <a href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$data->kategori->slug ? $data->kategori->slug : '-')); ?>" class="pull-left listing-category">

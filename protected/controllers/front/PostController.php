@@ -7,7 +7,7 @@ class PostController extends Controller
 		$this->render('index');
 	}
 
-	public function actionDetail($id,$slug){
+	public function actionDetail($kategori,$id,$slug){
 		$post = Post::model()->findByPk($id);
 		if($post === null)
 			throw new CHttpException('Bengkel Tidak Ditmukan');

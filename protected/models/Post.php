@@ -159,6 +159,9 @@ class Post extends CActiveRecord
 			}
 		}
 		else{
+			if($this->slug == ''){
+				$this->slug = $this->slugify($this->judul);
+			}
 			$this->tanggalModif = date('Y-m-d H:i:s');
 		}
 		return parent::beforeSave();
@@ -219,6 +222,7 @@ class Post extends CActiveRecord
 		$criteria = new CDbCriteria();
 		$criteria->with = array('kategori','lokasi');
 		$criteria->compare('idKategori',$this->idKategori);
+		$criteria->limit = $limit;
 		return self::model()->findAll($criteria);
 	}
 }

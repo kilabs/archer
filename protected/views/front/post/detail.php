@@ -1,7 +1,7 @@
 <?php 
 Yii::app()->clientScript->registerMetaTag('Bengkelin - '.$post->judul,null,null,array('property'=>'og:title'));
 Yii::app()->clientScript->registerMetaTag('article',null,null,array('property'=>'og:type'));
-Yii::app()->clientScript->registerMetaTag(Yii::app()->createAbsoluteUrl('post/detail',array('id'=>$post->id,'slug'=>$post->slug ? $post->slug : '-')),null,null,array('property'=>'og:url'));
+Yii::app()->clientScript->registerMetaTag(Yii::app()->createAbsoluteUrl('post/detail',array('kategori'=>$post->kategori->slug,'id'=>$post->id,'slug'=>$post->slug ? $post->slug : '-')),null,null,array('property'=>'og:url'));
 ?>
 <?php 
 if (isset($post->cover) and $post->cover != null):  
@@ -126,7 +126,7 @@ endif ?>
   <div class="col-md-9">
     <div class="listing-info">
       <h5 class="roboto">
-        <a href="<?php echo Yii::app()->createUrl('post/detail',array('id'=>$value->id,'slug'=>$value->slug ? $value->slug : '-')); ?>"><?php echo CHtml::encode($value->judul); ?></a>
+        <a href="<?php echo Yii::app()->createUrl('post/detail',array('kategori'=>$value->kategori->slug,'id'=>$value->id,'slug'=>$value->slug ? $value->slug : '-')); ?>"><?php echo CHtml::encode($value->judul); ?></a>
       </h5>
       <p class="small clearfix">
         <a class="pull-left listing-category" href="<?php echo Yii::app()->createUrl('post/list',array('kategori'=>$value->kategori->slug ? $value->kategori->slug : '-')); ?>">
